@@ -22,6 +22,10 @@
      
     </div>
   </section>
+
+  <CategoryProducts collectionslug="personligkalender"></CategoryProducts>
+
+  <CategoryProducts collectionslug="anteckningsbok"></CategoryProducts>
   </div>
 </template>
 
