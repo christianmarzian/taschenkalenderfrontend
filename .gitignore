@@ -93,3 +93,4 @@ sw.*
 jsconfig.json
 .vscode
 deploy.sh
+package-lock.json
