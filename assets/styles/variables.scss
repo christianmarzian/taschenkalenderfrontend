@@ -1,0 +1,185 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+
+// Set your colors
+$black: #111111;
+
+
+$primary: #c3cfbb;
+$primary-light: findLightColor($primary);
+$primary-dark: findDarkColor($primary);
+$primary-invert: findColorInvert($primary);
+
+// Links
+/*
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+*/
+
+$link: #dfb797;
+$link-light: findLightColor($link);
+$link-invert: findColorInvert($link);
+
+$info: #afc3c9;
+$info-light: findLightColor($info);
+$info-invert: findColorInvert($info);
+
+//$success: green;
+
+$warning: #dbcc7b;
+$warning-light: findLightColor($warning);
+
+$text-light: #94908b;
+
+$dark: $text;
+$dark-light: $text-light;
+
+$lighter: #e1d7c1;
+$lighter-invert: findColorInvert($lighter);
+
+$light: #e7e4e1;
+$light-invert: findColorInvert($light);
+
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+
+
+
+// MTK
+$text: $black;
+$primary: #95dbbb;
+$primary-light: #9EE8C7;
+$primary-invert: white;
+$link: #84C2A6;
+$link-invert: $primary-invert;
+$link-focus-border: $link;
+$link-light: findLightColor($link);
+$info: #A0D5DB;
+$info-light: findLightColor($info);
+$info-invert: findColorInvert($info);
+
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+    (
+        "white": (
+            $white,
+            $black,
+        ),
+        "black": (
+            $black,
+            $white,
+        ),
+        "light": (
+            $light,
+            $light-invert,
+        ),
+        "lighter": (
+            $lighter,
+            $lighter-invert,
+        ),
+        "dark": (
+            $dark,
+            $dark-invert,
+        ),
+        "primary": (
+            $primary,
+            $primary-invert,
+            $primary-light,
+            $primary-dark,
+        ),
+        "link": (
+            $link,
+            $link-invert,
+            $link-light,
+            $link-dark,
+        ),
+        "info": (
+            $info,
+            $info-invert,
+            $info-light,
+            $info-dark,
+        ),
+        "success": (
+            $success,
+            $success-invert,
+            $success-light,
+            $success-dark,
+        ),
+        "warning": (
+            $warning,
+            $warning-invert,
+            $warning-light,
+            $warning-dark,
+        ),
+        "danger": (
+            $danger,
+            $danger-invert,
+            $danger-light,
+            $danger-dark,
+        ),
+    ),
+    $custom-colors
+);
+
+// Fonts
+
+/*
+$family-sans-serif: "Jost", BlinkMacSystemFont, -apple-system, "Segoe UI", "Arial", sans-serif;
+$family-primary: $family-sans-serif;
+
+$title-family: "Playfair Display", serif;
+$title-weight: 800;
+$title-size: 3em;
+
+$subtitle-family: $family-sans-serif;
+$subtitle-weight: 300;
+$subtitle-size: 2em;
+$subtitle-color: $primary;
+*/
+
+$family-primary: 'azo-sans-web','jost', 'Avenir', Helvetica, Arial, sans-serif;
+$family-secondary: 'quimby-gubernatorial','Avenir', Helvetica, Arial, sans-serif;
+
+$body-family: $family-primary;
+$body-weight: 300;
+$strong-weight: 500;
+
+$title-size: 2em;
+$title-weight: 300;
+
+
+$subtitle-size:2em;
+$subtitle-weight:400;
+$subtitle-family: $family-secondary;
+
+
+
+
+
+
+
+
+$toast-border-radius:	0.5em;
+$toast-opacity:	0.8;
+
+$radial-gradient: linear-gradient(90deg, rgba(195,207,187,1) 0%, rgba(219,204,123,1) 100%);
+
+$section-padding: 1rem 0.5rem;
+$section-padding-desktop: 1rem 0rem;
+
+
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+.imgbox {
+    background: $radial-gradient;
+}

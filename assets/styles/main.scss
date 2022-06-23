@@ -1,0 +1,26 @@
+.page-enter-active {
+	transition: all .3s ease;
+}
+.page-leave-active {
+	transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.page-enter, .page-leave-to
+	/* .slide-fade-leave-active below version 2.1.8 */ {
+	//transform: translateY(-10px);
+    transform: scale(1.01);
+	opacity: 0;
+}
+
+
+h1, h2, h3, .title {
+    strong {
+        font-weight: 400;
+    }
+    font-weight:300 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.09rem;
+}
+
+.toast {
+    backdrop-filter: blur(2rem);
+}
