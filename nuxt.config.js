@@ -35,7 +35,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/fontawesome',
+    //'@nuxtjs/fontawesome',
     /*
     ['@nuxtjs/google-fonts', { 
       //preconnect: true, // true by default
