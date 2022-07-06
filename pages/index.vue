@@ -4,12 +4,12 @@
     <div class="container has-text-centered is-vcentered">
       <h1 class="title is-3">Din<br>personlig Kalender</h1>
 
-            <a href="" class="button is-dark is-inverted is-outlined is-large title">Skapa</a>
+            <a href="/create" class="button is-dark is-inverted is-outlined is-large title">Skapa</a>
             <br>
-            <a class="button is-dark is-inverted is-outlined is-small" href="#mehrinfos" >
+            <!--<a class="button is-dark is-inverted is-outlined is-small" href="#mehrinfos" >
               <span>Info</span>
               <b-icon icon="chevron-down"/>
-            </a>
+            </a>-->
                 
     </div>
             
