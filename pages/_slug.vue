@@ -27,7 +27,6 @@
 
         <p class="content" v-html="getDescriptionPart(1)"></p>
 
-        <code>{{product}}</code>
       </div>
     </div>
   </section>
