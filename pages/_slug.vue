@@ -73,7 +73,8 @@ export default {
 
   computed: {
     computedDesignerUrl() {
-      return `${this.$config.designerurl}?format=${this.$getFacetCode(this.product.facetValues,'DIN-Format')}&covertype=${this.$getFacetCode(this.product.facetValues,'Cover')}`
+      let nbadd = (this.product.name.includes("Anteckningsbok")) ? "/Anteckningsbok" : ""
+      return `${this.$config.designerurl}${nbadd}?format=${this.$getFacetCode(this.product.facetValues,'DIN-Format')}&covertype=${this.$getFacetCode(this.product.facetValues,'Cover')}`
     }
   },
 
