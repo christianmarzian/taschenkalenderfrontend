@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'Alegreya-Regular';
+    src: url('/fonts/Alegreya-Regular.woff2') format('woff2'),
+        url('/fonts/Alegreya-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alegreya-Medium';
+    src: url('/fonts/Alegreya-Medium.woff2') format('woff2'),
+        url('/fonts/Alegreya-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alegreya-MediumItalic';
+    src: url('/fonts/Alegreya-MediumItalic.woff2') format('woff2'),
+        url('/fonts/Alegreya-MediumItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alegreya-Italic';
+    src: url('/fonts/Alegreya-Italic.woff2') format('woff2'),
+        url('/fonts/Alegreya-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+	font-family: 'Satoshi';
+	src: url('/fonts/Satoshi-Variable.woff2') format('woff2'),
+		 url('/fonts/Satoshi-Variable.woff') format('woff'),
+		 url('/fonts/Satoshi-Variable.ttf') format('truetype');
+		 font-weight: 300 900;
+		 font-display: swap;
+		 font-style: normal;
+  }
+  
+  
+  /**
+  * This is a variable font
+  * You can controll variable axes as shown below:
+  * font-variation-settings: 'wght' 900.0;
+  *
+  * available axes:
+  
+  * 'wght' (range from 300.0 to 900.0)
+  
+ 
+  
+  @font-face {
+	font-family: 'Satoshi-Italic';
+	src: url('/fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+		 url('/fonts/Satoshi-VariableItalic.woff') format('woff'),
+		 url('/fonts/Satoshi-VariableItalic.ttf') format('truetype');
+		 font-weight: 300 900;
+		 font-display: swap;
+		 font-style: italic;
+  }
+   */

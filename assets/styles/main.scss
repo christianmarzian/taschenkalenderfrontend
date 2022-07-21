@@ -12,15 +12,46 @@
 }
 
 
-h1, h2, h3, .title {
+h1 {
     strong {
-        font-weight: 400;
+        font-weight: 900;
     }
-    font-weight:300 !important;
+    font-size:4em;
+    font-weight:900 !important;
     text-transform: uppercase;
-    letter-spacing: 0.09rem;
+    //letter-spacing: 0.09rem;
+}
+
+h3, h4 {
+    font-weight:900 !important;
+    text-transform:none;
+    letter-spacing: -0.01rem;
+}
+
+.button {
+    font-weight:700;
+    text-transform: uppercase;
+    border-radius:0.5rem;
 }
 
 .toast {
     backdrop-filter: blur(2rem);
+}
+
+.box {
+    margin: 0 0;
+
+    ul {
+        margin: -0.75rem 0;
+
+        li {
+        border-bottom: 1px #eee solid;
+        margin-top:0.5rem;
+        padding-bottom:0.5rem;
+        }
+        li:last-child {
+        border-bottom:none;
+        }
+        
+    }
 }

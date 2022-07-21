@@ -1,7 +1,6 @@
 <template>
   <div>
     <section class="section">
-    <h1 class="title is-3">{{collection.name}}</h1>
 
       <div class="columns is-multiline">
 

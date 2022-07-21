@@ -15,7 +15,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://use.typekit.net/whx5hpe.css'},
     ]
   },
 
@@ -35,16 +34,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    //'@nuxtjs/fontawesome',
-    /*
-    ['@nuxtjs/google-fonts', { 
-      //preconnect: true, // true by default
-      display: 'swap',
-      families: {
-        'Jost':[300,500,700]
-      }
-    }]
-    */
+    'nuxt-font-loader'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,6 +47,11 @@ export default {
     '@nuxtjs/apollo',
 
   ],
+
+  // Fontloader configuration
+  fontLoader: {
+    url: '/fonts/fonts.css'
+  },
 
   // Apollo configuration
   apollo: {

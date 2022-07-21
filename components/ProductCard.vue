@@ -11,7 +11,7 @@
     <div class="media">
 
       <div class="media-content">
-        <p class="subtitle is-3">{{item.product.name}}</p>
+        <h4 class="title is-4">{{item.product.name}}</h4>
         
       </div>
     </div>
