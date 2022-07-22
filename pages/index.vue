@@ -13,6 +13,7 @@
     
 
   <section class="section">
+    <section class="section"></section>
     <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker</h2></section>
     <div class="columns is-mobile">
 
@@ -65,27 +66,8 @@
 </style>
 
 <script>
-import { mapState, mapActions, mapMutations } from "vuex"
 
 export default {
   name: 'IndexPage',
-
-
-  beforeMount() {
-    this.$store.dispatch('api/testcall')
-    this.api.testcall
-
-  },
-
-  computed: {
-    ...mapState(["counter","api"]),
-  },
-
-  methods: {
-    ...mapActions("api",["testcall"]),
-    ...mapMutations([
-      'increment'
-    ])
-  }
 }
 </script>

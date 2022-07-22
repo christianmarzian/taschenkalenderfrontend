@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="container">
     <div class="centerlogo is-centered">
       <a href="/" title="epical home">            <img
@@ -11,7 +12,7 @@
         <template #brand>
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
                 <img
-                    src="@/assets/images/logo-book.png"
+                    src="/footer-logo.png"
                     alt="epical.me"
                 >
             </b-navbar-item>
@@ -49,13 +50,16 @@
       </div>
     </section>
     <section class="section"></section>
-    <footer class="footer has-background-light">
+
+  </div>
+      <footer class="footer has-background-light">
+        <div class="container">
       <div class="columns">
         <div class="column has-text-white">
           <a class="has-text-white" href="/om-oss">Om oss</a> | 
           <a class="has-text-white" href="/leverans">Leverans</a>
         </div>
-        <div class="column has-background-dark has-text-light is-one-third" style="margin-right:-0.75em;">
+        <div class="column has-background-dark has-text-light is-one-third">
           <h3 class="title is-1 has-text-light">Din Kalender</h3>
           <ul class="has-text-white">
             <li>+ genomskinligt plasthölje</li>
@@ -63,7 +67,7 @@
             <li>+ Design på 250g kartong</li>
             <li>+ upp till 144 sidor</li>
           </ul>
-        </div>
+        </div></div>
       </div>
     </footer>
   </div>
@@ -75,14 +79,14 @@
   background-repeat: no-repeat;
   background-position: -5em 10em;
 
-  border-radius: 0.3rem 0.3rem 0 0;
+  //border-radius: 0.3rem 0.3rem 0 0;
 }
 
 //@import '~/assets/styles/variables.scss';
 .centerlogo {
   position:absolute;
-  z-index:70;
-  top:20px;
+  z-index:40;
+  top:30px;
   left:38%;
   img {
     position:relative;
@@ -110,9 +114,9 @@
 
 .navbar-item {
   & img {
-    max-height: 3rem;
-    margin-top:1.8em;
-    margin-bottom:1.5em;
+    max-height: 5rem;
+    margin-top:1.5em;
+    margin-bottom:3.5em;
   }
 }
 
