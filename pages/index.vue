@@ -57,7 +57,8 @@
 <style lang="scss">
 #bigpicture {
   height:500px;
-  background: url('@/assets/images/bigpicture.jpg') center / cover;
+  //background: url('@/assets/images/bigpicture.jpg') center / cover;
+  background: url('https://backend.epical.me/assets/preview/b6/herobanner_1344x600__preview.jpg?preset=full') center / cover;
 
   .container {
     padding-top:140px;
