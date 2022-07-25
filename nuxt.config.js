@@ -58,9 +58,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.APOLLO_URL,
-        //httpEndpoint: 'http://localhost:3001/shop-api',
-        //httpEndpoint: 'http://srv11.imaginaro.de:3001/shop-api',
+        //httpEndpoint: process.env.APOLLO_URL,
+        httpEndpoint: 'http://localhost:3001/shop-api',
         httpLinkOptions: {
           credentials: 'include'
         },
