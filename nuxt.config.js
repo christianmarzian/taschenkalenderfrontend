@@ -60,7 +60,8 @@ export default {
       default: {
         //httpEndpoint: process.env.APOLLO_URL,
         //httpEndpoint: 'http://localhost:3001/shop-api',
-        httpEndpoint: 'https://backend.epical.me/shop-api',
+        //httpEndpoint: 'https://backend.epical.me/shop-api',
+        httpEndpoint: 'http://epical.me:3001/shop-api',
         httpLinkOptions: {
           credentials: 'include'
         },
