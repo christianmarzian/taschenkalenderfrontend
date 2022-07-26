@@ -54,6 +54,7 @@
       <div v-else class="has-text-centered">Din varukorg är tom 
         <a @click="changeQuantity" class="button">+</a>
       </div>
+      <div v-if="$apollo.loading">Loading...</div>
 
       <b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button>
 
@@ -131,7 +132,7 @@ export default {
         }
       }`
     })
-    //console.log("MUTATION",result)
+    console.log("MUTATION",result.data)
   }
   }
 };

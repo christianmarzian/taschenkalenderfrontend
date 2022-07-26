@@ -44,7 +44,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://www.npmjs.com/package/@nuxtjs/apollo
-    '@nuxtjs/auth-next',
+    //'@nuxtjs/auth-next',
     '@nuxtjs/apollo',
 
   ],
@@ -58,10 +58,9 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        //httpEndpoint: process.env.APOLLO_URL,
         //httpEndpoint: 'http://localhost:3001/shop-api',
-        //httpEndpoint: 'https://backend.epical.me/shop-api',
-        httpEndpoint: 'http://epical.me:3001/shop-api',
+        httpEndpoint: 'https://backend.epical.me/shop-api',
+        //httpEndpoint: 'http://test.epical.me:3001/shop-api',
         httpLinkOptions: {
           credentials: 'include'
         },
@@ -74,6 +73,7 @@ export default {
         persisting: false,
         websocketsOnly: false 
         */
+
       },
     },
   },
