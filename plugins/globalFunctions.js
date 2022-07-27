@@ -19,7 +19,7 @@ export default (context, inject) => {
 
 	const ensureHttps = (url, mode = 'large') => {
 		//console.log("Mode", mode)
-		return url.replace("http://", "https://") + "?preset=" + mode
+		return url.replace("http://", "https://").replace("localhost:3001", "backend.epical.me") + "?preset=" + mode
 	}
 	inject('ensureHttps', ensureHttps)
 

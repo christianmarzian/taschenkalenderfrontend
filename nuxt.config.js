@@ -47,6 +47,11 @@ export default {
     //'@nuxtjs/auth-next',
     '@nuxtjs/apollo',
 
+    ['nuxt-stripe-module', {
+      //publishableKey: 'pk_test_51L851ZKeMy0OEQsmGXVMkBtpOP2kDRrLieecaVcVxcAFWxM8dmHZIvMYA868imYcPRU5B5G7NwBe8ds74BLe248Q00dFBMl65F',
+      publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
+    }],
+
   ],
 
   // Fontloader configuration
@@ -59,8 +64,9 @@ export default {
     clientConfigs: {
       default: {
         //httpEndpoint: 'http://localhost:3001/shop-api',
-        httpEndpoint: 'https://backend.epical.me/shop-api',
+        //httpEndpoint: 'https://backend.epical.me/shop-api',
         //httpEndpoint: 'http://test.epical.me:3001/shop-api',
+        httpEndpoint: process.env.VENDURE_URI,
         httpLinkOptions: {
           credentials: 'include'
         },

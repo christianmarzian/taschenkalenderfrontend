@@ -14,17 +14,16 @@
         :mobile-cards="false"
       >
 	  	<b-table-column label="Antal" v-slot="props" width="120">
-            <b-numberinput @input="changeQuantity" min="0" controls-position="compact" size="is-small" type="is-text" :value="props.row.quantity">
-            </b-numberinput>
+            <CartAmount :row="props.row"></CartAmount>
 		  </b-table-column>
 
       <b-table-column v-slot="props" width="120">
-            <img :src="props.row.productVariant.product.featuredAsset.preview" :alt="props.row.productVariant.name" />
+            <img :src="$ensureHttps(props.row.productVariant.product.featuredAsset.preview)" :alt="props.row.productVariant.name" />
 		  </b-table-column>
 		
 
         <b-table-column label="Name" v-slot="props">
-          {{ props.row.productVariant.name }}
+          <h4 class="subtitle is-5">{{ props.row.productVariant.name }}</h4>
           <p v-if="props.row.customFields.serial">Artikelnummer {{ props.row.customFields.serial}}</p>
         </b-table-column>
 
@@ -56,13 +55,11 @@
       </div>
       <div v-if="$apollo.loading">Loading...</div>
 
-      <b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button>
+      <a href="/checkout"><b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button>
+      </a>
 
     </section>
 
-    <section class="section">
-      <code>{{ activeOrder }}</code>
-    </section>
   </div>
 </template>
 
@@ -113,27 +110,9 @@ export default {
 
   methods: {
     onPageChange() {
-      alert(activeOrder.lines)
-    },
-
-    changeQuantityOld(event) {
-      console.log("changeQuantity", event)
-    },
-
-    async changeQuantity(event) {
-    // Call to the graphql mutation
-    const result = await this.$apollo.mutate({
-      // Query
-      mutation: gql`mutation {
-        addItemToOrder(productVariantId: 3, quantity: 1) {
-          ... on Order {
-            id
-          }
-        }
-      }`
-    })
-    console.log("MUTATION",result.data)
+      alert("Change")
+    }
   }
-  }
+
 };
 </script>
