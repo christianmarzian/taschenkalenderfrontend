@@ -95,3 +95,4 @@ jsconfig.json
 deploy.sh
 package-lock.json
 /static/create
+/static/backend
