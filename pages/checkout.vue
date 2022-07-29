@@ -331,7 +331,7 @@ export default {
 
     async setCustomer() {
       const ealogin = await this.$axios.post(
-        this.$config.epicalapi.url + "/auth/login",
+        this.$config.epicalapi_url + "/auth/login",
         this.$config.epicalapi_login
       );
       const existingCustomer = await this.$axios.$get(
