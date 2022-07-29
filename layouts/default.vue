@@ -26,24 +26,7 @@
             {{ item.title }}
           </b-navbar-item>
           <b-navbar-item tag="div">
-            <div class="buttons">
-
-
-              <NuxtLink v-if="activeOrder" class="button is-primary" :to="{ name: 'cart' }">
-                <b-icon icon="cart" />
-                <b-tag rounded>{{activeOrder.lines.length}}</b-tag>
-              </NuxtLink>
-              <b-tooltip v-else label="Din varukorg är tom" position="is-left">
-              <a class="button is-text" disabled :to="{path: 'cart'}">
-                <b-icon icon="cart-variant" />
-              </a>
-              </b-tooltip>
-              <!--
-              <a class="button is-light">
-                <b-icon icon="login" />
-              </a>
-              -->
-            </div>
+            <CartButton></CartButton>
           </b-navbar-item>
         </template>
       </b-navbar>
@@ -95,21 +78,7 @@ export default {
           to: { name: "anteckningsbok" },
         },
       ],
-      activeOrder: {},
     }
-  },
-  apollo: {
-    activeOrder: {
-      query: gql`
-        query {
-          activeOrder {
-            lines {
-              quantity
-            }
-          }
-        }
-      `,
-    },
   },
 };
 </script>

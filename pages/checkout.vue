@@ -1,242 +1,484 @@
 <template>
-	<div>
-		<form id="checkoutform" v-on:submit.prevent>
-			<section class="section">
-				<h3 class="title is-3">Adres</h3>
-				
-				<div class="columns">
+  <div>
+    <form
+      v-if="activeOrder"
+      id="checkoutform"
+      ref="checkoutform"
+      v-on:submit.prevent
+    >
+      <b-loading
+        :is-full-page="true"
+        v-model="isLoading"
+        :can-cancel="false"
+      ></b-loading>
+      <section class="section">
+        <h3 class="title is-3">Mina kontaktuppgifter</h3>
+        <div class="columns">
+          <div class="column">
+            <b-field label="E-Post">
+              <b-input
+                :value="
+                  activeOrder.customer ? activeOrder.customer.emailAddress : ''
+                "
+                ref="emailAddress"
+                required
+                placeholder="e-post"
+                maxlength="50"
+                autocomplete="email"
+              ></b-input>
+            </b-field>
+          </div>
+        </div>
+        <h3 class="title is-3">Adress</h3>
 
-					<div class="column">
-						
-							<b-field label="Name">
-							<b-input
-							:value="activeOrder.billingAddress.fullName"
-							ref="fullName"
-							required
-							placeholder="Name"
-							maxlength="50"
-							autocomplete="name"
-							></b-input>
-						</b-field>
+        <div class="columns">
+          <div class="column">
+            <b-field label="Förnamn">
+              <b-input
+                :value="
+                  activeOrder.customer ? activeOrder.customer.firstName : ''
+                "
+                ref="firstName"
+                required
+                placeholder="förnamn"
+                maxlength="35"
+                autocomplete="given-name"
+              ></b-input>
+            </b-field>
+          </div>
+          <div class="column">
+            <b-field label="Efternamn">
+              <b-input
+                :value="
+                  activeOrder.customer ? activeOrder.customer.lastName : ''
+                "
+                ref="lastName"
+                required
+                placeholder="efternamn"
+                maxlength="35"
+                autocomplete="family-name"
+              ></b-input>
+            </b-field>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <b-field label="Gata och Husnummer">
+              <b-input
+                :value="activeOrder.billingAddress.streetLine1"
+                ref="streetLine1"
+                required
+                placeholder="gata och husnummer"
+                maxlength="50"
+                autocomplete="street-address"
+              ></b-input>
+            </b-field>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-narrow is-one-quarter">
+            <b-field label="Postnummer">
+              <b-input
+                :value="activeOrder.billingAddress.postalCode"
+                ref="postalCode"
+				placeholder="postnummer"
+                required
+                minlength="5"
+                maxlenght="5"
+                autocomplete="postal-code"
+              ></b-input>
+            </b-field>
+          </div>
+          <div class="column is-one-half">
+            <b-field label="Stad">
+              <b-input
+                :value="activeOrder.billingAddress.city"
+                ref="city"
+                required
+                placeholder="stad"
+                maxlength="35"
+                autocomplete="address-level2"
+              ></b-input>
+            </b-field>
+          </div>
+		            <div class="column is-narrow">
+            <b-field label="Land">
+              <b-select
+                placeholder="land"
+                ref="countryCode"
+                required
+                autocomplete="country-name"
+                :value="activeOrder.billingAddress.countryCode || 'SE'"
+              >
+                <option value="SE">Sverige</option>
+              </b-select>
+            </b-field>
+          </div>
+        </div>
 
-						<b-field label="Street and Housenumber">
-							<b-input
-							:value="activeOrder.billingAddress.streetLine1"
-							ref="streetLine1"
-							required
-							placeholder="Street"
-							maxlength="50"
-							autocomplete="street-address"
-							></b-input>
-						</b-field>
-					
-				</div>
-				</div>
-				<div class="columns">
-				<div class="column is-narrow is-one-half">
-					<b-field label="PostalCode">
-					<b-input
-					:value="activeOrder.billingAddress.postalCode"
-					ref="postalCode"
-					required
-					minlength="5"
-					maxlenght="5"
-					autocomplete="postal-code"
-					></b-input>
-				</b-field>
-				</div>
-				<div class="column is-one-half">
-					<b-field label="City">
-					<b-input
-					:value="activeOrder.billingAddress.City"
-					ref="city"
-					required
-					placeholder="Ort"
-					maxlength="35"
-					autocomplete="address-level2"
-					></b-input>
-				</b-field>
-				</div>
-				</div>
+        <div class="columns">
 
-				<div class="columns">
-					<div class="column">
-						<b-field label="Country">
-					<b-select
-					placeholder="Your country"
-					ref="countryCode"
-					required
-					autocomplete="country-name"
-					:value="activeOrder.billingAddress.countryCode"
-					>
-						<option value="SE">Sverige</option>
-					</b-select>
-				</b-field>
-					</div>
-				</div>
+        </div>
+      </section>
 
-				
-			</section>
-
-			<section class="section">
+      <section class="section">
+		<div class="columns">
+			<div class="column is-narrow">
 				<h3 class="title is-3">Betalning</h3>
-				<div id="card-element"></div>
-					<div id="payment-element">
-						<!-- Elements will create form elements here -->
-					</div>
-					<div id="error-message">
-						<!-- Display error message to your customers here -->
-					</div>
-			</section>
+			</div>
+			<div class="column"><h5 class="title is-3">{{activeOrder.totalWithTax / 100}} kr</h5></div>
+		</div>
+        
 
-			<section class="section">
-				<a id="submit" ref="submit" @click="doCheckout" class="button is-large is-primary" style="display:none">Checkout</a>
-			</section>
-		</form>
-		
-	</div>
+        <div id="payment-element">
+          <!-- Elements will create form elements here -->
+        </div>
+      </section>
+
+      <section class="section">
+        <button
+          type="submit"
+          ref="hidesubmit"
+          id="hidesubmit"
+          style="display: none"
+        ></button>
+        <a
+          id="submit"
+          ref="submit"
+          @click="doCheckout"
+          class="button is-large is-primary"
+          style="display: none"
+          >beställ nu</a
+        >
+      </section>
+    </form>
+  </div>
 </template>
 
 <script>
+//import axios from "axios";
 import gql from "graphql-tag";
+import { mapState, mapMutations } from "vuex";
 export default {
-	data() {
-		return {
-			paymentElement: false
-		};
-	},
-	apollo: {
-		activeOrder: {
-		query: gql`
-			query {
-			activeOrder {
-				code
-				createdAt
-				customer {
-				firstName
-				}
-				payments {
-				method
-				}
-				lines {
-					linePriceWithTax
-					id
-					quantity
+  data() {
+    return {
+      pi: false,
+      elements: false,
+      paymentElement: false,
+    };
+  },
 
-					productVariant {
-						name
-						sku
-						product{featuredAsset{preview}}
-					}
-					customFields {
-						serial
-						generated_at
-						printed_at
-					}
-				}
-				billingAddress {
-					fullName
-					company
-					streetLine1
-					postalCode
-					city
-					countryCode
-				}
-				totalWithTax
-			}
-			}
-		`,
-		},
-	},
+  computed: {
+    ...mapState(["isLoading"]),
+  },
 
-	async mounted() {
-		var loading = function(isLoading) {
-			if (isLoading) {
+  apollo: {
+    activeOrder: {
+      query: gql`
+        query {
+          activeOrder {
+            id
+            code
+            state
+            createdAt
+            customer {
+              emailAddress
+              firstName
+              lastName
+            }
+            billingAddress {
+              fullName
+              company
+              streetLine1
+              postalCode
+              city
+              countryCode
+            }
+            shippingAddress {
+              fullName
+              company
+              streetLine1
+              postalCode
+              city
+              countryCode
+            }
+            totalWithTax
+          }
+        }
+      `,
+      watchLoading(isLoading) {
+        this.setIsLoading(isLoading);
+        //console.log("isLoading",isLoading)
+        // countModifier is either 1 or -1
+      },
+    },
+  },
 
-			document.getElementById("submit").disabled = true
-			document.getElementById("submit").classList.add("is-loading")
-			} else {
-			document.getElementById("submit").disabled = false
-			document.getElementById("submit").classList.remove("is-loading")
-			}
+  async mounted() {
+    this.setIsLoading(true);
+    await this.loadStripe();
+    this.setIsLoading(false);
+  },
+
+  /*
+	watch: {
+		isLoading: function() {
+			alert(isLoading)
 		}
+	},*/
 
-		// Show the customer the error from Stripe if their card fails to charge
-		var showError = function(errorMsgText) {
-			loading(false);
-			var errorMsg = document.getElementById("card-error");
-			errorMsg.textContent = errorMsgText;
-			setTimeout(function() {
-				errorMsg.textContent = "";
-			}, 4000);
-		};
+  methods: {
+    ...mapMutations(["setIsLoading"]),
 
-		await this.loadStripe()
+    async loadStripe() {
+      //if (this.$stripe && this.activeOrder && this.activeOrder.state && this.activeOrder.state != "ArrangingPayment") {
+      if (this.$stripe && this.activeOrder && this.activeOrder.state) {
+        const appearance = {
+          theme: "stripe",
+          variables: {
+            colorPrimary: "#eee",
+            colorText: "#000",
+          },
+        };
+        this.pi = await this.createPaymentIntent();
+        const { clientSecret } = { clientSecret: this.pi };
+        this.elements = this.$stripe.elements({ appearance, clientSecret });
+        this.paymentElement = this.elements.create("payment");
+        this.paymentElement.mount("#payment-element");
+        this.$refs.submit.style.display = "block";
+      } else {
+        this.$router.push("/cart");
+      }
+    },
 
-		
-	},
+    async createPaymentIntent() {
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation {
+            createStripePaymentIntent
+          }
+        `,
+      });
+      //console.log("PI", res.data.createStripePaymentIntent)
+      return res.data.createStripePaymentIntent;
+    },
 
-	methods:{
+    async doCheckout() {
+      this.setIsLoading(true);
 
+      console.log("FORM valid", this.$refs.checkoutform.checkValidity());
 
-		async loadStripe() {
-			if (this.$stripe && this.activeOrder) {
+      if (!this.$refs.checkoutform.checkValidity()) {
+        const notifAddress = this.$buefy.notification.open({
+          duration: 5000,
+          message: "Kontrollera dina adressuppgifter",
+          position: "is-top",
+          type: "is-danger",
+          hasIcon: true,
+        });
+        //this.$refs.checkoutform.onSubmit()
+        //document.getElementById('checkoutform').submit()
+        this.$refs.hidesubmit.click();
+      } else {
+        const elements = this.elements;
 
+        const customer = await this.setCustomer();
+        console.log("Customer", customer);
 
-				/*
-				const style = {
-					base: {
-						color: "#000",
-						fontFamily: 'Satoshi, Avenir, Arial, sans-serif',
-						fontSmoothing: "antialiased",
-						fontSize: "16px",
-						"::placeholder": {
-						color: "#eee"
-						}
-					},
-					invalid: {
-						fontFamily: 'Satoshi, Avenir, Arial, sans-serif',
-						color: "#ff3860",
-						iconColor: "#ff3860"
-					}
-				}*/
-				const appearance = {
-					theme: 'stripe',
-					variables: {
-					colorPrimary: '#eee',
-					colorText: '#000',
-					},
-				};
-				let pi = await this.createPaymentIntent()
-				const { clientSecret } = {clientSecret: pi}
-				const elements = this.$stripe.elements({appearance, clientSecret})
-				this.paymentElement = elements.create('payment');
-				this.paymentElement.mount('#payment-element');
-				this.$refs.submit.style.display = "block"
-			}
-		},
+        const baddress = await this.setOrderBillingAddress();
+        console.log("BillingAddress", baddress);
 
-		async createPaymentIntent() {
-			let res = await this.$apollo.mutate({
-				mutation: gql`mutation {
-					createStripePaymentIntent
-				}`
-			})
-			//console.log("PI", res.data.createStripePaymentIntent)
-			return res.data.createStripePaymentIntent
-    	},
+        const saddress = await this.setOrderShippingAddress();
+        console.log("ShippingAddress", saddress);
 
-		doCheckout() {
-			const stripe = this.$stripe
-			const paymentElement = this.paymentElement
-			this.createPaymentIntent().then(function(pi) {
-				console.log("PI: ", pi)
-				const secret = pi.split("secret_")[1]
-				stripe.confirmCardPayment(pi, { payment_method: { card: card}}).then(function(paymentresult) {
-					console.log("PR", paymentresult)
-				})
-			})
-		}
-	}
-}
+        const state = await this.transitionOrderToArrangingPaymentState();
+        console.log("State", state);
+
+        //const ps = await this.addPaymentStripe()
+        //console.log("PS", ps)
+        // -> über Webhook
+
+        const { error } = await this.$stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            //return_url: "http://localhost:3000/success",
+            return_url: location.origin + `/success/${this.activeOrder.code}`,
+          },
+        });
+
+        // This point will only be reached if there is an immediate error when
+        // confirming the payment. Otherwise, your customer will be redirected to
+        // your `return_url`. For some payment methods like iDEAL, your customer will
+        // be redirected to an intermediate site first to authorize the payment, then
+        // redirected to the `return_url`.
+        let notificationText = "";
+        if (error.type === "card_error" || error.type === "validation_error") {
+          notificationText = error.message;
+        } else {
+          notificationText =
+            "Det gick inte att slutföra betalningen. Var god försök igen.";
+        }
+        const notif = this.$buefy.notification.open({
+          duration: 5000,
+          message: notificationText,
+          position: "is-top",
+          type: "is-danger",
+          hasIcon: true,
+        });
+      }
+      this.setIsLoading(false);
+    },
+
+    async setCustomer() {
+      const ealogin = await this.$axios.post(
+        "/auth/login",
+        this.$config.epicalapi_login
+      );
+      const existingCustomer = await this.$axios.$get(
+        "customers/1?emailAddress=" + this.$refs.emailAddress.computedValue,
+        { headers: { Authorization: "Bearer " + ealogin.data.token } }
+      );
+      console.log("AXIOS", existingCustomer);
+      if (existingCustomer) {
+        console.log("existingCustomer", existingCustomer.id);
+        const formData = new FormData();
+        formData.append("customerId", existingCustomer.id);
+        const order = await this.$axios.$put(
+          "orders/" + this.activeOrder.code,
+          formData,
+          { headers: { Authorization: "Bearer " + ealogin.data.token } }
+        );
+        await this.$apollo.queries.activeOrder.refresh;
+      } else {
+        console.log("NOT EXISTING");
+        return await this.setCustomerForOrder();
+      }
+    },
+
+    async setOrderBillingAddress() {
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation ($input: CreateAddressInput!) {
+            setOrderBillingAddress(input: $input) {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            fullName: `${this.$refs.firstName.computedValue} ${this.$refs.lastName.computedValue}`,
+            streetLine1: this.$refs.streetLine1.computedValue,
+            postalCode: this.$refs.postalCode.computedValue,
+            city: this.$refs.city.computedValue,
+            countryCode: this.$refs.countryCode.computedValue,
+          },
+        },
+      });
+      return res;
+    },
+
+    async setOrderShippingAddress() {
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation ($input: CreateAddressInput!) {
+            setOrderShippingAddress(input: $input) {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            fullName: `${this.$refs.firstName.computedValue} ${this.$refs.lastName.computedValue}`,
+            streetLine1: this.$refs.streetLine1.computedValue,
+            postalCode: this.$refs.postalCode.computedValue,
+            city: this.$refs.city.computedValue,
+            countryCode: this.$refs.countryCode.computedValue,
+          },
+        },
+      });
+      return res;
+    },
+
+    async setCustomerForOrder() {
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation ($input: CreateCustomerInput!) {
+            setCustomerForOrder(input: $input) {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            emailAddress: this.$refs.emailAddress.computedValue,
+            firstName: this.$refs.firstName.computedValue,
+            lastName: this.$refs.lastName.computedValue,
+          },
+        },
+      });
+      return res;
+    },
+
+    async transitionOrderToArrangingPaymentState() {
+      const pi = this.pi;
+      const metadata = {};
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation {
+            transitionOrderToState(state: "ArrangingPayment") {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+      });
+      return res;
+    },
+
+    async addPaymentStripe() {
+      const pi = this.pi;
+      const metadata = {};
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation ($input: PaymentInput!) {
+            addPaymentToOrder(input: $input) {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            method: "stripe",
+            metadata: {},
+          },
+        },
+      });
+      return res;
+    },
+  },
+};
 </script>

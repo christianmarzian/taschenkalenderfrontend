@@ -3,19 +3,21 @@
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h1 class="title">Skapa en egen snygg personlig kalender</h1>
-          <h2 class="subtitle">
+          <h1 class="title is-1">Skapa en egen snygg personlig kalender</h1>
+          <h2 class="subtitle is-3">
             Så här enkelt är det att designa din egen personliga kalender
           </h2>
 
-          <p>
+          <p class="content">
             Här visar vi dig steg för steg hur du använder vårt fantastiska
             verktyg för att i några få enkla steg designa din egen personliga
             kalender. Med Epical Me har det aldrig varit enklare att skapa en
             unik kalender online! Efter att du har valt ditt önskade format,
             kvalitet på ditt omslag samt färger och typsnitt är du redo att
             börja designa innehållet i din kalender!
+            
           </p>
+          <p>&nbsp;</p>
         </div>
       </div>
 
@@ -28,7 +30,7 @@
           />
         </div>
         <div class="column">
-          <h2 class="title is-4">1. OMSLAGSDESIGN</h2>
+          <h5 class="title is-4">1. OMSLAGSDESIGN</h5>
           <p>
             Det första steget i ditt skapande är din omslagsdesign.<br />&nbsp;
           </p>
@@ -99,11 +101,11 @@
         </div>
       </div>
     </section>
-
+    <hr/>
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h2 class="title is-4">2. DIN UNIKA PERSONLIGA TEXT</h2>
+          <h5 class="title is-4">2. DIN UNIKA PERSONLIGA TEXT</h5>
           <p>
             Nu är omslaget färdigt och det är dags att gå vidare och designa
             insidan av din kalender. När du slår upp din kalender möts du av en
@@ -130,7 +132,7 @@
         </div>
       </div>
     </section>
-
+    <hr/>
     <section class="section">
       <div class="columns">
         <div class="column is-narrow is-one-quarter">
@@ -141,7 +143,7 @@
           />
         </div>
         <div class="column">
-          <h2 class="title is-4">3. DITT PERSONLIGA INNEHÅLL</h2>
+          <h5 class="title is-4">3. DITT PERSONLIGA INNEHÅLL</h5>
           <p>
             Nu är din kalender nästan redo! Nu ska du bara välja när du vill att
             din kalender ska starta, ska den starta till hösten eller våren?
@@ -161,11 +163,11 @@
         </div>
       </div>
     </section>
-
+    <hr/>
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h2 class="title is-4">4. SMÅ MODULER MED STOR EFFEKT</h2>
+          <h5 class="title is-4">4. SMÅ MODULER MED STOR EFFEKT</h5>
           <p>Komplettera din kalender med våra moduler.</p>
           <div class="content">
             <ul>
@@ -191,7 +193,7 @@
         </div>
       </div>
     </section>
-
+    <hr/>
     <section class="section">
       <div class="columns">
         <div class="column is-narrow is-one-quarter">
@@ -202,7 +204,7 @@
           />
         </div>
         <div class="column">
-          <h2 class="title is-4">5. DIN SLUTSIDOR</h2>
+          <h5 class="title is-4">5. DIN SLUTSIDOR</h5>
           <p>
             I kalender ingår upp till 18 kostnadsfria slutsidor. Om du önskar
             addera fler utökar du enkelt antalet sidor och bilagor när du skapar
@@ -220,11 +222,11 @@
         </div>
       </div>
     </section>
-
+    <hr/> 
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h2 class="title is-4">NU ÄR DIN KALENDER KLAR!</h2>
+          <h5 class="title is-4">NU ÄR DIN KALENDER KLAR!</h5>
           <p>
             I översikten är alla dina val listade och i förhandsvisningen kan du
             kontrollera att allt ser bra ut. Om allt är korrekt kan du lägga din
@@ -242,7 +244,7 @@
     </section>
     <hr />
     <section class="section">
-      <h2 class="title is-4">BÖRJA SKAPA DIN KALENDER</h2>
+      <h5 class="title is-4">BÖRJA SKAPA DIN KALENDER</h5>
       <p>
         Nu har du koll på alla bitar i skapandet och du är redo att börja
         designa din egen kalender. Testa dig fram och lära känna vårt

@@ -43,7 +43,6 @@
           <a href="/personligalmanacka">
                       <b-button
                 label="Läs mer om hur du skapar din kalender"
-                type="is-light"
                 icon-right="arrow-right" />
                 </a>
           </p>

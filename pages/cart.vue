@@ -1,62 +1,58 @@
 <template>
   <div class="cart">
+    <!--<b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>-->
     <section class="section">
-      <div         v-if="activeOrder">
-      <b-table
-        :data="activeOrder.lines"
-        @page-change="onPageChange"
-        :bordered="false"
-        :striped="false"
-        :narrowed="false"
-        :hoverable="false"
-        :loading="isLoading"
-        :focusable="false"
-        :mobile-cards="false"
-      >
-	  	<b-table-column label="Antal" v-slot="props" width="120">
-            <CartAmount :row="props.row"></CartAmount>
-		  </b-table-column>
+      <div v-if="activeOrder && activeOrder.lines && activeOrder.lines.length > 0">
+      <table class="table is-fullwidth is-hoverable">
+        <b-loading :is-full-page="false" v-model="isLoading" :can-cancel="false"></b-loading>
+        <thead>
+        <tr>
+          <th>Antal</th>
+          <th> </th>
+          <th>Name</th>
+          <th class="has-text-right">Pris</th>
+        </tr>
+        </thead>
 
-      <b-table-column v-slot="props" width="120">
-            <img :src="$ensureHttps(props.row.productVariant.product.featuredAsset.preview)" :alt="props.row.productVariant.name" />
-		  </b-table-column>
-		
+        <tbody>
+        <tr v-for="line in activeOrder.lines" :key="line.id">
+          <td width="120"><CartAmount :row="line"></CartAmount></td>
+          <td width="120"><img :src="$ensureHttps(line.productVariant.product.featuredAsset.preview)" :alt="line.productVariant.name" /></td>
+          <td>
+            <h4 class="subtitle is-5">{{ line.productVariant.name }}</h4>
+            <p v-if="line.customFields.serial">Artikelnummer {{ line.customFields.serial}}</p>
+          </td>
+          <td width="110" class="has-text-right">{{ (line.linePriceWithTax) / 100 }} kr</td>
+        </tr>
+        </tbody>
 
-        <b-table-column label="Name" v-slot="props">
-          <h4 class="subtitle is-5">{{ props.row.productVariant.name }}</h4>
-          <p v-if="props.row.customFields.serial">Artikelnummer {{ props.row.customFields.serial}}</p>
-        </b-table-column>
-
-        <b-table-column
-          width="110" 
-          field="unitPriceWithTax"
-          label="Pris"
-          v-slot="props"
-        >
-          {{ (props.row.linePriceWithTax) / 100 }} kr
-        </b-table-column>
-
-        <template #footer >
-          <th colspan="3">
-            <div class="th-wrap is-numeric">Totalt</div>
-          </th>
-          <th>
-              <div class="th-wrap is-numeric">{{activeOrder.totalWithTax / 100}} kr</div>
-          </th>
-
-        </template>
+        <tfoot>
+          <tr>
+            <td colspan="2"> </td>
+            <td class="has-text-right">Frakt</td>
+            <td class="has-text-right">{{activeOrder.shippingWithTax / 100}} kr</td>
+          </tr>
+          <tr>
+            <th colspan="2"> </th>
+            <th class="has-text-right">Totalt <small>inkl. moms</small></th>
+            <th class="has-text-right">{{activeOrder.totalWithTax / 100}} kr</th>
+          </tr>
+        </tfoot>
+      </table>
 
 
-
-      </b-table>
       </div>
-      <div v-else class="has-text-centered">Din varukorg är tom 
-        <a @click="changeQuantity" class="button">+</a>
-      </div>
-      <div v-if="$apollo.loading">Loading...</div>
 
-      <a href="/checkout"><b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button>
-      </a>
+      <div v-if="activeOrder && activeOrder.lines && activeOrder.lines.length > 0">
+        <a href="/checkout"><b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button></a>
+      </div>
+      <div v-else>
+        <h2 v-if="!isLoading" class="subtitle has-text-centered">Din varukorg är tom </h2>
+      </div>
+      
+
+      
+      
 
     </section>
 
@@ -64,19 +60,25 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import gql from "graphql-tag";
 export default {
   data() {
     return {
-      isLoading: false,
-      activeOrder: {},
+      //activeOrder: {},
     };
   },
+
+	computed: {
+    ...mapState(["isLoading", "forceRefresh"]),
+  },
+
   apollo: {
     activeOrder: {
       query: gql`
         query {
           activeOrder {
+            id
             code
             createdAt
             customer {
@@ -97,21 +99,59 @@ export default {
               }
               customFields {
                 serial
-                generated_at
-                printed_at
               }
             }
+            shippingWithTax
             totalWithTax
           }
         }
       `,
+      /*
+      watchLoading (isLoading) {
+        console.log("APOLLO Loading", isLoading)
+        this.setIsLoading(isLoading)
+      },
+      */
     },
   },
 
-  methods: {
-    onPageChange() {
-      alert("Change")
+  async mounted() {
+    console.log("Mounted")
+    await this.setOrderShippingMethod()
+    console.log("Shipping set")
+    this.$apollo.queries.activeOrder.refetch()
+    console.log("Refreshed")
+    this.setIsLoading(false)
+  },
+
+  watch: {
+    /*activeOrder: function () {
+      //alert("Active Order")
+      console.log("ActiveOrderWatcher")
+    },*/
+
+    forceRefresh: function (val) {
+      this.$apollo.queries.activeOrder.refetch()
+      this.setForceRefresh(false)
+      this.setIsLoading(false)
     }
+  },
+
+  methods: {
+    ...mapMutations(["setIsLoading", "setForceRefresh"]),
+
+    async setOrderShippingMethod() {
+			let res = await this.$apollo.mutate({
+				mutation: gql`mutation {
+				setOrderShippingMethod(shippingMethodId:"3") {
+					... on Order {
+					  code
+					}
+				}
+				}`
+			})
+			return res
+		},
   }
 
 };

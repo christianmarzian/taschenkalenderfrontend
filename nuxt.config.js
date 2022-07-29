@@ -2,6 +2,8 @@ export default {
 
   publicRuntimeConfig: {
     designerurl: process.env.DESIGNER_URL,
+    epicalapi_url: process.env.EPICALAPI_URL,
+    epicalapi_login: process.env.EPICALAPI_LOGIN,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -26,7 +28,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   { src: '~/plugins/globalFunctions.js'}
+    { 
+      src: '~/plugins/globalFunctions.js',
+      //src: '~/plugins/axios.js'
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,6 +52,9 @@ export default {
     //'@nuxtjs/auth-next',
     '@nuxtjs/apollo',
 
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+
     ['nuxt-stripe-module', {
       //publishableKey: 'pk_test_51L851ZKeMy0OEQsmGXVMkBtpOP2kDRrLieecaVcVxcAFWxM8dmHZIvMYA868imYcPRU5B5G7NwBe8ds74BLe248Q00dFBMl65F',
       publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
@@ -57,6 +65,12 @@ export default {
   // Fontloader configuration
   fontLoader: {
     url: '/fonts/fonts.css'
+  },
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: process.env.EPICALAPI_URL,
   },
 
   // Apollo configuration
