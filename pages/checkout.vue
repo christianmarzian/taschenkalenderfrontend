@@ -335,7 +335,7 @@ export default {
         this.$config.epicalapi_login
       );
       const existingCustomer = await this.$axios.$get(
-        this.$config.epicalapi_url + "customers/1?emailAddress=" + this.$refs.emailAddress.computedValue,
+        this.$config.epicalapi_url + "/customers/1?emailAddress=" + this.$refs.emailAddress.computedValue,
         { headers: { Authorization: "Bearer " + ealogin.data.token } }
       );
       console.log("AXIOS", existingCustomer);
@@ -344,7 +344,7 @@ export default {
         const formData = new FormData();
         formData.append("customerId", existingCustomer.id);
         const order = await this.$axios.$put(
-          this.$config.epicalapi_url + "orders/" + this.activeOrder.code,
+          this.$config.epicalapi_url + "/orders/" + this.activeOrder.code,
           formData,
           { headers: { Authorization: "Bearer " + ealogin.data.token } }
         );
