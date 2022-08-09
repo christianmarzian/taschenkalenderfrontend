@@ -14,6 +14,14 @@ export default {
     },
   }, 
 
+  watch: {
+    forceRefresh: function (val) {
+      this.$apollo.queries.activeOrder.refetch()
+      this.setForceRefresh(false)
+      this.setIsLoading(false)
+    }
+  },
+
   methods: {
     ...mapMutations(["setIsLoading","setForceRefresh"]),
 

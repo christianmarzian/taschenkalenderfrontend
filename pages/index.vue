@@ -40,11 +40,11 @@
           </ul>
           <p>
             <br>
-          <a href="/personligalmanacka">
-                      <b-button
-                label="Läs mer om hur du skapar din kalender"
-                icon-right="arrow-right" />
-                </a>
+            <a class="button" href="/personligalmanacka">
+              <span class="is-hidden-mobile">Läs mer om hur du skapar din kalender</span>
+              <span class="is-hidden-tablet">Läs mer</span>
+              <span class="icon is-small"><i class="mdi mdi-arrow-right"></i></span></a>
+
           </p>
         </div>
       </div>

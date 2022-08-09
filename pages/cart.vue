@@ -22,7 +22,7 @@
             <h4 class="subtitle is-5">{{ line.productVariant.name }}</h4>
             <p v-if="line.customFields.serial">Artikelnummer {{ line.customFields.serial}}</p>
           </td>
-          <td width="110" class="has-text-right">{{ (line.linePriceWithTax) / 100 }} kr</td>
+          <td width="120" class="has-text-right">{{ (line.linePriceWithTax) / 100 }} kr</td>
         </tr>
         </tbody>
 

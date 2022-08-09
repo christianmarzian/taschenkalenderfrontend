@@ -15,7 +15,7 @@
         <h3 class="title is-3">Mina kontaktuppgifter</h3>
         <div class="columns">
           <div class="column">
-            <b-field label="E-Post">
+            <b-field label="E-post">
               <b-input
                 :value="
                   activeOrder.customer ? activeOrder.customer.emailAddress : ''
@@ -63,7 +63,7 @@
         </div>
         <div class="columns">
           <div class="column">
-            <b-field label="Gata och Husnummer">
+            <b-field label="Adress, gata, nummer">
               <b-input
                 :value="activeOrder.billingAddress.streetLine1"
                 ref="streetLine1"

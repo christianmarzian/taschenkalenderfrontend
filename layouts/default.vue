@@ -10,7 +10,7 @@
       <b-navbar>
         <template #brand>
           <b-navbar-item tag="router-link" :to="{ path: '/' }">
-            <img src="/footer-logo.png" alt="epical.me" />
+            <img class="brandlogo" src="/footer-logo.png" alt="epical.me" />
           </b-navbar-item>
         </template>
         <template #start> </template>
@@ -111,6 +111,12 @@ export default {
     img {
       height: 70px;
     }
+  }
+
+  .brandlogo {
+    width:1px;
+    min-height:30px;
+    opacity:0;
   }
 }
 
