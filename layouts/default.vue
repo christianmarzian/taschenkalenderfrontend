@@ -42,7 +42,7 @@
       <div class="container">
         <div class="columns">
           <div class="column has-text-white">
-            <a class="has-text-white" href="/om-oss">Om oss</a> |
+            <a class="has-text-white" href="/anvandarvillkor">Användarvillkor</a> |
             <a class="has-text-white" href="/personuppgifter">Personuppgifter</a>
           </div>
           <div class="column has-background-dark has-text-light is-one-third">
