@@ -12,6 +12,7 @@
         <h1 class="title is-3 is-size-4-mobile">{{ product.name }}</h1>
 
         <p v-html="getDescriptionPart()"></p>
+        
         <section class="section">
             <div class="columns is-vcentered">
             <div class="column price">
@@ -19,13 +20,24 @@
                 {{ $toSek(product.variants[0].priceWithTax) }}
                 </p>
             </div>
-            <div class="column">
-                <a :href="computedDesignerUrl" class="button is-primary is-large">Skapa nu</a>
+            <div class="column" v-if="product.variants.length <= 1">
+                <IntoCartButton :product="product"></IntoCartButton>
             </div>
             </div>
         </section>
 
-        <p class="content" v-html="getDescriptionPart(1)"></p>
+        <section class="section" v-if="product.variants.length > 1">
+          <h2 class="subtitle is-3 is-size-4-mobile">Välj variant</h2>
+          <div class="columns is-multiline">
+            <div class="column is-one-quarter" v-for="variant in product.variants" :key="variant.sku">
+              <b-tooltip :label="`Lägg ${variant.name} i kundkorg`">
+                <img @click="addToCart(variant)" v-if="variant.featuredAsset" :src="$ensureHttps(variant.featuredAsset.preview)" :alt="variant.sku" width="250" class="variantimg" />
+              </b-tooltip>
+            </div>
+          </div>
+        </section>
+
+        <p v-if="getDescriptionPart(1) != '<ul>undefined'" class="content" v-html="getDescriptionPart(1)"></p>
 
       </div>
     </div>
@@ -33,6 +45,7 @@
 </template>
 <script>
 import gql from "graphql-tag";
+import { mapMutations } from "vuex";
 
 export default {
   asyncData({ params }) {
@@ -48,8 +61,11 @@ export default {
             name
             description
             variants {
+              id
               sku
+              name
               priceWithTax
+              featuredAsset{preview}
             }
             assets {
               id
@@ -71,23 +87,45 @@ export default {
     },
   },
 
-  computed: {
-    computedDesignerUrl() {
-      let nbadd = (this.product.name.includes("Anteckningsbok")) ? "/Anteckningsbok" : ""
-      return `${this.$config.designerurl}${nbadd}?format=${this.$getFacetCode(this.product.facetValues,'DIN-Format')}&covertype=${this.$getFacetCode(this.product.facetValues,'Cover')}`
-    }
-  },
 
   methods: {
+    ...mapMutations(["setIsLoading"]),
+
     getDescriptionPart(part = 0) {
         let parts = this.product.description.split("<ul>")
         return part == 1 ? "<ul>" + parts[part] : parts[part]
-    }
+    },
+
+    async addToCart(variant) {
+      //console.log("Variant", variant)
+		  this.setIsLoading(true)
+			let res = await this.$apollo.mutate({
+				mutation: gql`mutation ($productVariantId: ID!) {
+				addItemToOrder(productVariantId: $productVariantId, quantity: 1) {
+					... on Order {
+						id
+						code
+					}
+					... on OrderModificationError {
+						message
+					}
+				}
+				}`,
+				variables: {
+					productVariantId: variant.id,
+				}
+			})
+			console.log(res)
+			this.$router.push('/cart')
+    },
   }
 };
 </script>
 
 <style scoped>
+    .variantimg {
+      cursor:pointer;
+    }
     .imgcontainer{
         margin-bottom:1.5em;
     }

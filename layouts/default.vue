@@ -36,7 +36,9 @@
           <Nuxt />
         </div>
       </section>
-      <section class="section"></section>
+      
+      <section class="section"> </section>
+
     </div>
     <footer class="footer has-background-light">
       <div class="container">
@@ -47,11 +49,15 @@
           </div>
           <div class="column has-background-dark has-text-light is-one-third">
             <h3 class="title is-1 has-text-light">Din Kalender</h3>
-            <ul class="has-text-white">
-              <li>+ genomskinligt plasthölje</li>
-              <li>+ Spiralbindning (tre färger)</li>
-              <li>+ Design på 250g kartong</li>
-              <li>+ upp till 144 sidor</li>
+            <ul class="has-text-white" style="list-style-type:'+ ';margin-left:20px;margin-top:-10px;">
+
+              <li>Kraftigt skyddande omslag</li>
+              <li>Runda hörn</li>
+              <li>Klistermärken ingår</li>
+              <li>Snodd och bindning i flera olika färger</li>
+              <li>Personligt eller designat omslag</li>
+              <li>Temasidor</li>
+
             </ul>
           </div>
         </div>

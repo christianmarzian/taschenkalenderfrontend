@@ -50,6 +50,21 @@
       </div>
     </div>
   </section>
+
+  <section class="section">
+
+    <div class="columns is-multiline">
+
+      <div class="column is-one-third"          
+        v-for="product in products.items"
+        :key="product.id"
+        :title="product.name">
+        <ProductCard :product="product"></ProductCard>
+      </div>
+
+    </div>
+  </section>
+
   </div>
 </template>
 
@@ -66,8 +81,46 @@
 </style>
 
 <script>
-
+import gql from "graphql-tag";
 export default {
   name: 'IndexPage',
+
+  apollo: {
+    products: {
+      query: gql`
+      query {
+        products(
+          options: {
+            filter: { slug: { in: ["penna", "pennhallare", "klistermarken"] } }
+          }
+        ) {
+          items {
+            id
+            name
+            slug
+            featuredAsset {
+              name
+              preview
+              source
+              width
+              height
+            }
+            facetValues{
+              facet{name}
+              code
+            }
+            variants{
+              id
+              sku
+              priceWithTax
+            }
+          }
+          totalItems
+        }
+      }
+      `
+    }
+  },
 }
+
 </script>

@@ -8,7 +8,7 @@
           v-for="item in collection.productVariants.items"
           :key="item.id"
           :title="item.product.name">
-          <ProductCard :item="item"></ProductCard>
+          <ProductCard :product="item.product"></ProductCard>
         </div>
 
       </div>
@@ -54,9 +54,14 @@ export default {
                   facet{name}
                   code
                 }
+                variants{
+                  sku
+                  priceWithTax
+                }
               }
-
-              priceWithTax
+              id
+              productId
+              
             }
           }
         }

@@ -17,7 +17,7 @@
         <tbody>
         <tr v-for="line in activeOrder.lines" :key="line.id">
           <td width="120"><CartAmount :row="line"></CartAmount></td>
-          <td width="120"><img :src="$ensureHttps(line.productVariant.product.featuredAsset.preview)" :alt="line.productVariant.name" /></td>
+          <td width="120"><img v-if="line.productVariant.product.featuredAsset" :src="$ensureHttps(line.productVariant.product.featuredAsset.preview)" :alt="line.productVariant.name" /></td>
           <td>
             <h4 class="subtitle is-5">{{ line.productVariant.name }}</h4>
             <p v-if="line.customFields.serial">Artikelnummer {{ line.customFields.serial}}</p>
