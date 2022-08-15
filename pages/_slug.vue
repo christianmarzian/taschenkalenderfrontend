@@ -11,7 +11,7 @@
       <div class="column">
         <h1 class="title is-3 is-size-4-mobile">{{ product.name }}</h1>
 
-        <p v-html="getDescriptionPart()"></p>
+        <p class="content" v-html="getDescriptionPart()"></p>
         
         <section class="section">
             <div class="columns is-vcentered">

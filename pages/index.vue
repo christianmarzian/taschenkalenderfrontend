@@ -2,7 +2,7 @@
   <div>
   <div class="container" id="bigpicture">
     <div class="container has-text-centered is-vcentered">
-      <h1 class="title">En unik<br>Kalender</h1>
+      <h1 class="title">En unik<br>personlig Kalender</h1>
       <br>
       <a href="/create" class="button is-black is-medium title">Börja Skapa</a>
       <br>
@@ -14,7 +14,7 @@
 
   <section class="section">
     <section class="section"></section>
-    <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker</h2></section>
+    <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker<br>Den bästa kreatören är du</h2></section>
     <div class="columns is-mobile">
 
      
