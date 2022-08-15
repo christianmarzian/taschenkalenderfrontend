@@ -2,7 +2,7 @@
   <div>
   <div class="container" id="bigpicture">
     <div class="container has-text-centered is-vcentered">
-      <h1 class="title">En unik<br>personlig Kalender</h1>
+      <h1 class="title is-size-1-mobile">En unik<br>personlig Kalender</h1>
       <br>
       <a href="/create" class="button is-black is-medium title">Börja Skapa</a>
       <br>
