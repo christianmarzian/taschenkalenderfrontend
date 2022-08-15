@@ -3,8 +3,9 @@
     <!--<b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>-->
     <section class="section">
       <div v-if="activeOrder && activeOrder.lines && activeOrder.lines.length > 0">
+      <b-loading :is-full-page="false" v-model="isLoading" :can-cancel="false"></b-loading>
       <table class="table is-fullwidth is-hoverable">
-        <b-loading :is-full-page="false" v-model="isLoading" :can-cancel="false"></b-loading>
+        
         <thead>
         <tr>
           <th>Antal</th>
@@ -17,7 +18,14 @@
         <tbody>
         <tr v-for="line in activeOrder.lines" :key="line.id">
           <td width="120"><CartAmount :row="line"></CartAmount></td>
-          <td width="120"><img v-if="line.productVariant.product.featuredAsset" :src="$ensureHttps(line.productVariant.product.featuredAsset.preview)" :alt="line.productVariant.name" /></td>
+          <td width="120">
+            <div v-if="line.productVariant.featuredAsset">
+              <img :src="$ensureHttps(line.productVariant.featuredAsset.preview)" :alt="line.productVariant.name" />
+            </div>
+            <div v-else>
+              <img v-if="line.productVariant.product.featuredAsset" :src="$ensureHttps(line.productVariant.product.featuredAsset.preview)" :alt="line.productVariant.name" />
+            </div>
+          </td>
           <td>
             <h4 class="subtitle is-5">{{ line.productVariant.name }}</h4>
             <p v-if="line.customFields.serial">Artikelnummer {{ line.customFields.serial}}</p>
@@ -95,6 +103,7 @@ export default {
               productVariant {
                 name
                 sku
+                featuredAsset{preview}
                 product{featuredAsset{preview}}
               }
               customFields {

@@ -97,11 +97,11 @@ export default {
     ...mapMutations(["setIsLoading"]),
 
     getDescriptionPart(part = 0) {
-        console.log("productdescription: ", this.product.description)
+        //console.log("productdescription: ", this.product.description)
         let parts = this.product.description.split("<ul>")
         let prefix ="<ul>"
         if (!parts[1]) {
-          console.log("Part1", parts[1])
+          //.log("Part1", parts[1])
           parts = this.product.description.split("<h3>")
           prefix = "<h3>"
         }
@@ -128,7 +128,7 @@ export default {
 					productVariantId: variant.id,
 				}
 			})
-			console.log(res)
+			//console.log(res)
 			this.$router.push('/cart')
     },
   }

@@ -10,16 +10,10 @@
     </div>
             
   </div>
+
+  <ProductChooser></ProductChooser>
     
-
-  <section class="section">
-    <section class="section"></section>
-    <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker<br>Den bästa kreatören är du</h2></section>
-    <div class="columns is-mobile">
-
-     
-    </div>
-  </section>
+  <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker<br>Den bästa kreatören är du</h2></section>
 
   <CategoryProducts collectionslug="personligkalender"></CategoryProducts>
 
