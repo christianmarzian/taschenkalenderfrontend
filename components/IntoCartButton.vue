@@ -1,6 +1,6 @@
 <template>
 	<span>
-		<b-loading :is-full-page="true" v-model="isLoading" :can-cancel="false"></b-loading>
+		<b-loading :is-full-page="false" v-model="isLoading" :can-cancel="false"></b-loading>
 		<a v-if="product.name.includes('Anteckningsbok') || product.name.toLowerCase().includes('kalender')" :href="computedDesignerUrl" class="button is-primary is-pulled-right">Skapa</a>
 		<a v-else-if="product.variants.length > 1" class="button is-primary is-pulled-right" :href="product.slug">Välj variant</a>
 		<a v-else class="button is-pulled-right is-primary" @click="addToCart()">Lägg i kundkorg</a>
