@@ -11,9 +11,9 @@
             
   </div>
 
-  <ProductChooser></ProductChooser>
-    
   <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker<br>Den bästa kreatören är du</h2></section>
+
+  <ProductChooser></ProductChooser>
 
   <CategoryProducts collectionslug="personligkalender"></CategoryProducts>
 
