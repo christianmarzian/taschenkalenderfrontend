@@ -136,6 +136,21 @@
       </section>
 
       <section class="section">
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <b-checkbox v-model="newsletter">
+                Prenumerera
+            </b-checkbox>
+          </div>
+          <div class="column is-full">
+            <b-checkbox v-model="agreed">
+                Jag accepterar <a href="/anvandarvillkor">villkoren</a>* <span v-if="!agreed" v-html="agreederror"></span>
+            </b-checkbox>
+            </div>
+          </div>
+      </section>
+
+      <section class="section">
         <button
           type="submit"
           ref="hidesubmit"
@@ -148,6 +163,7 @@
           @click="doCheckout"
           class="button is-large is-primary"
           style="display: none"
+          :disabled="!agreed"
           >beställ nu</a
         >
       </section>
@@ -165,6 +181,9 @@ export default {
       pi: false,
       elements: false,
       paymentElement: false,
+      agreed: false,
+      agreederror: "",
+      newsletter: false,
     };
   },
 
@@ -268,6 +287,9 @@ export default {
 
       console.log("FORM valid", this.$refs.checkoutform.checkValidity());
 
+      this.agreederror = !this.agreed ? "<span style='color: #ee0000'>obligatorisk</span>" : ""
+      console.log("ERROR", this.agreederror)
+
       if (!this.$refs.checkoutform.checkValidity()) {
         const notifAddress = this.$buefy.notification.open({
           duration: 5000,
@@ -279,6 +301,15 @@ export default {
         //this.$refs.checkoutform.onSubmit()
         //document.getElementById('checkoutform').submit()
         this.$refs.hidesubmit.click();
+        } else if (!this.agreed) {
+          const notifAddress = this.$buefy.notification.open({
+            duration: 5000,
+            message: "Accepterar villkoren",
+            position: "is-top",
+            type: "is-danger",
+            hasIcon: true,
+        });
+        
       } else {
         const elements = this.elements;
 
