@@ -27,9 +27,9 @@
       <div class="column">
         <div class="field">
           <button
-            class="button is-primary is-large"
+            class="button is-primary"
             @click="jetztgestalten()"
-            style="margin-top: 22px"
+            style="margin-top: 32px"
           >
             Börja skapa &gt;
           </button>

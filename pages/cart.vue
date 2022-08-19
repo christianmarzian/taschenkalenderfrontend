@@ -55,7 +55,8 @@
         <a href="/checkout"><b-button size="is-large" icon-right="chevron-right" type="is-primary">Till beställning</b-button></a>
       </div>
       <div v-else>
-        <h2 v-if="!isLoading" class="subtitle has-text-centered">Din varukorg är tom </h2>
+        <h2 v-if="!isLoading && activeOrder && activeOrder.lines && activeOrder.lines.length == 0" class="subtitle has-text-centered">Din varukorg är tom </h2>
+        <h2 v-else class="subtitle has-text-centered">...</h2>
       </div>
       
 
@@ -73,7 +74,7 @@ import gql from "graphql-tag";
 export default {
   data() {
     return {
-      //activeOrder: {},
+      activeOrder: {},
     };
   },
 

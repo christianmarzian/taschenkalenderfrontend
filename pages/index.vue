@@ -11,7 +11,10 @@
             
   </div>
 
-  <section class="section"><h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker<br>Den bästa kreatören är du</h2></section>
+  <section class="section">
+    <h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker</h2>
+    <h5 class="title is-4 has-text-centered" style="text-transform:uppercase">Den bästa kreatören är du</h5>
+  </section>
 
   <ProductChooser></ProductChooser>
 
@@ -23,7 +26,8 @@
     <div class="container">
       <div class="columns box">
         <div class="column">
-          <video autoplay="autoplay" id="herovideo" loop="true" muted="true" width="100%"><source src="https://www.mein-taschenkalender.com/hero-video.mp4" type="video/mp4"></video>
+          <!--<video autoplay="autoplay" id="herovideo" loop="true" muted="true" width="100%"><source src="https://www.mein-taschenkalender.com/hero-video.mp4" type="video/mp4"></video>-->
+          <img src="https://picsum.photos/400/300"/>
         </div>
         <div class="column">
           <h2 class="subtitle"> Kalendern som är lika unik som du</h2>
@@ -49,7 +53,7 @@
 
     <div class="columns is-multiline">
 
-      <div class="column is-one-third"          
+      <div class="column is-one-quarter-desktop is-one-third-tablet"
         v-for="product in products.items"
         :key="product.id"
         :title="product.name">
@@ -85,7 +89,7 @@ export default {
       query {
         products(
           options: {
-            filter: { slug: { in: ["penna", "pennhallare", "klistermarken"] } }
+            filter: { slug: { in: ["penna", "penna-fineline-4pack", "pennhallare", "klistermarken"] } }
           }
         ) {
           items {

@@ -3,7 +3,7 @@
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h1 class="title is-1">Skapa en egen snygg personlig kalender</h1>
+          <h1 class="title is-1" style="font-weight:400">Skapa en egen snygg personlig kalender</h1>
           <h2 class="subtitle is-3">
             Så här enkelt är det att designa din egen personliga kalender
           </h2>
