@@ -63,6 +63,8 @@
     </div>
   </section>
 
+  <Newsletter></Newsletter>
+
   </div>
 </template>
 
