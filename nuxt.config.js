@@ -57,7 +57,8 @@ export default {
 
     ['nuxt-stripe-module', {
       //publishableKey: 'pk_test_51L851ZKeMy0OEQsmGXVMkBtpOP2kDRrLieecaVcVxcAFWxM8dmHZIvMYA868imYcPRU5B5G7NwBe8ds74BLe248Q00dFBMl65F',
-      publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
+      //publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
+      publishableKey: 'pk_live_51L851ZKeMy0OEQsma6I41LDLSg5ptaC1kgLSN9KOL3m71qmeRMO4x5S0o8KdW0FjXEaIog4UTqkqz5qgjI857q1T003013d5e5'
     }],
 
   ],
