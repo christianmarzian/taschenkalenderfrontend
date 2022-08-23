@@ -55,6 +55,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
 
+    // GoogleTagManager https://morioh.com/p/e41edc2bbdaf
+    '@nuxtjs/gtm',
+
     ['nuxt-stripe-module', {
       //publishableKey: 'pk_test_51L851ZKeMy0OEQsmGXVMkBtpOP2kDRrLieecaVcVxcAFWxM8dmHZIvMYA868imYcPRU5B5G7NwBe8ds74BLe248Q00dFBMl65F',
       //publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
@@ -62,6 +65,12 @@ export default {
     }],
 
   ],
+
+  // Google Tag Manager Settings
+  gtm: {
+    enabled:true,
+    id: 'GTM-5LQV29W'
+  },
 
   // Fontloader configuration
   fontLoader: {
