@@ -1,9 +1,10 @@
 <template>
   <section class="section">
     <div class="columns">
-      <div class="column">
+      <div class="column" v-if="$route.query.redirect_status != 'failed'">
         <h1 class="is-title">Din beställning lyckades</h1>
 		    <h2 class="subtitle">Ditt ordernummer är {{slug}}</h2>
+        Status: {{$route.query.redirect_status}}
       </div>
     </div>
   </section>
@@ -19,7 +20,13 @@ export default {
   },
 
   async mounted() {
-    this.setForceRefresh(true)
+    console.log("PARAMS", this.$route.query.redirect_status)
+    if (this.$route.query.redirect_status == 'failed') {
+      this.$router.push("/cart")
+    } else {
+      this.setForceRefresh(true)
+    }
+    
   },
 
   methods: {
