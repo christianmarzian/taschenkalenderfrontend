@@ -14,7 +14,7 @@
       </div>
       <div class="column">
         <div class="field">
-          <label class="label">önskad storlek</label>
+          <label class="label">Önskad storlek</label>
           <div class="select">
             <select id="format" name="format" v-model="format">
               <option value="a4">A4: 210x297 mm</option>
