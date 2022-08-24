@@ -139,7 +139,7 @@
         <div class="columns is-multiline">
           <div class="column is-full">
             <b-checkbox v-model="newsletter">
-                Jag accepterar Epicals Privacy policy. Jag samtycker till att Epical skickar information om produkter/tjänster via email. Jag kan avregistrera mig närsomhelst.
+                Jag accepterar <a href="/anvandarvillkor">Epicals Privacy policy</a>. Jag samtycker till att Epical skickar information om produkter/tjänster via email. Jag kan avregistrera mig närsomhelst.
             </b-checkbox>
           </div>
           <div class="column is-full">
