@@ -15,6 +15,22 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
+    script: [ 
+      {
+        //<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="029c6520-4566-47c2-a80b-22b6641d1ef4" data-blockingmode="auto" type="text/javascript"></script>
+        src: "https://consent.cookiebot.com/uc.js",
+        'data-cbid': "029c6520-4566-47c2-a80b-22b6641d1ef4",
+        'data-blockingmode': "auto",
+        //async: false
+      },
+      {
+        //<script id="CookieDeclaration" src="https://consent.cookiebot.com/029c6520-4566-47c2-a80b-22b6641d1ef4/cd.js" type="text/javascript" async></script>
+        src: "https://consent.cookiebot.com/029c6520-4566-47c2-a80b-22b6641d1ef4/cd.js",
+        id: "CookieDeclaration",
+        async:true,
+        body: true
+      }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ]
