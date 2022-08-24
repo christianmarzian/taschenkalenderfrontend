@@ -45,7 +45,8 @@
         <div class="columns">
           <div class="column has-text-white">
             <a class="has-text-white" href="/anvandarvillkor">Användarvillkor</a> |
-            <a class="has-text-white" href="/personuppgifter">Personuppgifter</a>
+            <a class="has-text-white" href="/personuppgifter">Personuppgifter</a> |
+            <a class="has-text-white" href="/cookies">Cookies</a>
           </div>
           <div class="column has-background-dark has-text-light is-one-third">
             <h3 class="title is-1 has-text-light">Din Kalender</h3>
@@ -63,8 +64,6 @@
         </div>
       </div>
     </footer>
-    <script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
-    </script><script type="text/javascript">window.Beacon('init', 'c873c74a-8b69-496d-9416-364983a832c7')</script>
   </div>
 </template>
 
@@ -76,7 +75,7 @@ export default {
     return {
       navitems: [
         {
-          title: "Personal Kalender",
+          title: "Personlig Kalender",
           icon: "home",
           to: { name: "almanacka" },
         },

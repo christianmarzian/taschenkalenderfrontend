@@ -19,7 +19,8 @@
         novalidate
       >
         <div id="mc_embed_signup_scroll">
-          <h2 class="subtitle is-2" style="font-weight:normal;margin:inherit;font-size:2em;">Prenumerera</h2>
+          <h2 class="subtitle is-2" style="font-weight:normal;margin:inherit;font-size:2em;">Prenumerera på vårt nyhetsbrev</h2>
+          <p>Jag accepterar Epicals Link to Privacy policy. Jag samtycker till att Epical skickar information om produkter/tjänster via email. Jag kan avregistrera mig närsomhelst.</p>
           <div class="indicates-required">
             <span class="asterisk">*</span> obligatorisk
           </div>
@@ -71,7 +72,7 @@
             <div class="clear foot">
               <input
                 type="submit"
-                value="att registrera"
+                value="Ja, registrera mig"
                 name="subscribe"
                 id="mc-embedded-subscribe"
                 class="button is-primary"

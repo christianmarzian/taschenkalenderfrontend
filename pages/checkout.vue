@@ -139,12 +139,12 @@
         <div class="columns is-multiline">
           <div class="column is-full">
             <b-checkbox v-model="newsletter">
-                Prenumerera
+                Jag accepterar Epicals Link to Privacy policy. Jag samtycker till att Epical skickar information om produkter/tjänster via email. Jag kan avregistrera mig närsomhelst.
             </b-checkbox>
           </div>
           <div class="column is-full">
             <b-checkbox v-model="agreed">
-                Jag accepterar <a href="/anvandarvillkor">villkoren</a>* <span v-if="!agreed" v-html="agreederror"></span>
+                Jag accepterar Epicals <a href="/anvandarvillkor">villkor</a>* <span v-if="!agreed" v-html="agreederror"></span>
             </b-checkbox>
             </div>
           </div>
