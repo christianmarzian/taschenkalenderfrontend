@@ -8,7 +8,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Epical.me | Personal Calendars',
+    title: 'Epical.me | Personlig Kalender',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,6 +24,7 @@ export default {
         //async: false
       },
       //<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
+      /* jetzt in default.vue
       {
         src: '/scripts/helpbeacon.js',
         body:true
@@ -33,6 +34,7 @@ export default {
         src: '/scripts/helpbeacon2.js',
         body:true
       }
+      */
       
     ],
     link: [
@@ -125,15 +127,21 @@ export default {
         */
 
       },
+      admin: {
+        httpEndpoint: process.env.VENDURE_ADMIN_URI,
+        httpLinkOptions: {
+          credentials: 'include'
+        }
+      }
     },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'Epical.me - Personal Calendars', 
+      name: 'Epical.me - Din personlig Kalender', 
       short_name: 'Epical.me',
-      description: 'Personal Calendars',
+      description: 'Personliga almanackor och anteckningsböcker',
       lang: 'se', 
       display: "standalone",
       background_color: "#e7e4e1",

@@ -1,6 +1,6 @@
 export const state = () => ({
     isLoading: false, 
-	forceRefresh: false
+	forceRefresh: false,
 })
 
 export const mutations = {
@@ -12,5 +12,6 @@ export const mutations = {
 	setForceRefresh(state, val) {
         state.forceRefresh = val
     },
+
 
 }

@@ -64,6 +64,8 @@
         </div>
       </div>
     </footer>
+    <script src="/scripts/helpbeacon.js" type="text/javascript" />
+    <script src="/scripts/helpbeacon2.js" type="text/javascript" />
   </div>
 </template>
 

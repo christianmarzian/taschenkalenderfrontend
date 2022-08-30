@@ -122,14 +122,13 @@
       </section>
 
       <section class="section">
-		<div class="columns">
-			<div class="column is-narrow">
-				<h3 class="title is-3">Betalning</h3>
-			</div>
-			<div class="column"><h5 class="title is-3">{{activeOrder.totalWithTax / 100}} kr</h5></div>
-		</div>
+        <div class="columns">
+          <div class="column is-narrow">
+            <h3 class="title is-3">Betalning</h3>
+          </div>
+          <div class="column"><h5 class="title is-3">{{$toSek(activeOrder.totalWithTax)}}</h5></div>
+        </div>
         
-
         <div id="payment-element">
           <!-- Elements will create form elements here -->
         </div>
@@ -151,21 +150,32 @@
       </section>
 
       <section class="section">
-        <button
-          type="submit"
-          ref="hidesubmit"
-          id="hidesubmit"
-          style="display: none"
-        ></button>
         <a
+          v-if="activeOrder.totalWithTax == 0"
           id="submit"
           ref="submit"
-          @click="doCheckout"
+          @click="doZeroCheckout"
           class="button is-large is-primary"
-          style="display: none"
           :disabled="!agreed"
           >beställ nu</a
         >
+        <div v-else>
+          <button
+            type="submit"
+            ref="hidesubmit"
+            id="hidesubmit"
+            style="display: none"
+          ></button>
+          <a
+            id="submit"
+            ref="submit"
+            @click="doCheckout"
+            class="button is-large is-primary"
+            style="display: none"
+            :disabled="!agreed"
+            >beställ nu</a
+          >
+        </div>
       </section>
     </form>
   </div>
@@ -250,23 +260,25 @@ export default {
     ...mapMutations(["setIsLoading"]),
 
     async loadStripe() {
-      //if (this.$stripe && this.activeOrder && this.activeOrder.state && this.activeOrder.state != "ArrangingPayment") {
-      if (this.$stripe && this.activeOrder && this.activeOrder.state) {
-        const appearance = {
-          theme: "stripe",
-          variables: {
-            colorPrimary: "#eee",
-            colorText: "#000",
-          },
-        };
-        this.pi = await this.createPaymentIntent();
-        const { clientSecret } = { clientSecret: this.pi };
-        this.elements = this.$stripe.elements({ appearance, clientSecret });
-        this.paymentElement = this.elements.create("payment");
-        this.paymentElement.mount("#payment-element");
-        this.$refs.submit.style.display = "block";
-      } else {
-        this.$router.push("/cart");
+      if(this.activeOrder.totalWithTax &&this.activeOrder.totalWithTax > 0) {
+        //if (this.$stripe && this.activeOrder && this.activeOrder.state && this.activeOrder.state != "ArrangingPayment") {
+        if (this.$stripe && this.activeOrder && this.activeOrder.state) {
+          const appearance = {
+            theme: "stripe",
+            variables: {
+              colorPrimary: "#eee",
+              colorText: "#000",
+            },
+          };
+          this.pi = await this.createPaymentIntent();
+          const { clientSecret } = { clientSecret: this.pi };
+          this.elements = this.$stripe.elements({ appearance, clientSecret });
+          this.paymentElement = this.elements.create("payment");
+          this.paymentElement.mount("#payment-element");
+          this.$refs.submit.style.display = "block";
+        } else {
+          this.$router.push("/cart");
+        }
       }
     },
 
@@ -280,6 +292,45 @@ export default {
       });
       //console.log("PI", res.data.createStripePaymentIntent)
       return res.data.createStripePaymentIntent;
+    },
+
+    async doZeroCheckout() {
+      this.setIsLoading(true)
+      if(this.activeOrder.totalWithTax == 0) {
+        this.agreederror = !this.agreed ? "<span style='color: #ee0000'>obligatorisk</span>" : ""
+        if (!this.$refs.checkoutform.checkValidity()) {
+          const notifAddress = this.$buefy.notification.open({
+            duration: 5000,
+            message: "Kontrollera dina adressuppgifter",
+            position: "is-top",
+            type: "is-danger",
+            hasIcon: true,
+          });
+          //this.$refs.checkoutform.onSubmit()
+          //document.getElementById('checkoutform').submit()
+          this.$refs.hidesubmit.click();
+        } else if (!this.agreed) {
+          const notifAddress = this.$buefy.notification.open({
+            duration: 5000,
+            message: "Accepterar villkoren",
+            position: "is-top",
+            type: "is-danger",
+            hasIcon: true,
+        });
+        
+        } else {
+          const customer = await this.setCustomer();
+          const baddress = await this.setOrderBillingAddress();
+          const saddress = await this.setOrderShippingAddress();
+          const state = await this.transitionOrderToArrangingPaymentState();
+          const payment = await this.addPaymentZero();
+          const settle = await this.transitionOrderToSettlePaymentState();
+          this.$router.push(`/success/${this.activeOrder.code}`)
+        }
+        this.setIsLoading(false)
+      } else {
+        this.$router.push("/cart");
+      }
     },
 
     async doCheckout() {
@@ -314,16 +365,16 @@ export default {
         const elements = this.elements;
 
         const customer = await this.setCustomer();
-        console.log("Customer", customer);
+        //console.log("Customer", customer);
 
         const baddress = await this.setOrderBillingAddress();
-        console.log("BillingAddress", baddress);
+        //console.log("BillingAddress", baddress);
 
         const saddress = await this.setOrderShippingAddress();
-        console.log("ShippingAddress", saddress);
+        //console.log("ShippingAddress", saddress);
 
         const state = await this.transitionOrderToArrangingPaymentState();
-        console.log("State", state);
+        //console.log("State", state);
 
         //const ps = await this.addPaymentStripe()
         //console.log("PS", ps)
@@ -466,8 +517,6 @@ export default {
     },
 
     async transitionOrderToArrangingPaymentState() {
-      const pi = this.pi;
-      const metadata = {};
       let res = await this.$apollo.mutate({
         mutation: gql`
           mutation {
@@ -482,9 +531,30 @@ export default {
           }
         `,
       });
+      console.log("ArrangingPaymentState",res)
       return res;
     },
 
+    async transitionOrderToSettlePaymentState() {
+      let res = await this.$apollo.mutate({
+        mutation: gql`
+          mutation {
+            transitionOrderToState(state: "PaymentSettled") {
+              ... on Order {
+                id
+                code
+                state
+                totalWithTax
+              }
+            }
+          }
+        `,
+      });
+      console.log("ArrangingPaymentState",res)
+      return res;
+    },
+
+    /*
     async addPaymentStripe() {
       const pi = this.pi;
       const metadata = {};
@@ -510,6 +580,31 @@ export default {
       });
       return res;
     },
+    */
+
+    async addPaymentZero() {
+      let res = await this.$apollo.provider.clients.admin.mutate({
+        mutation: gql`
+          mutation($id:ID!) { 
+            addManualPaymentToOrder(
+              input: {
+                orderId: $id
+                method: "standard-payment"
+                metadata: {}
+                transactionId: "NoPayment"
+              }
+            ) {
+              __typename
+            }
+          }
+        `,
+        variables: {"id": this.activeOrder.id}
+      })
+      return res;
+    },
+
   },
+
+  
 };
 </script>

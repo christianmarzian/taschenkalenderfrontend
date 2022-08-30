@@ -4,7 +4,6 @@
       <div class="column" v-if="$route.query.redirect_status != 'failed'">
         <h1 class="is-title">Din beställning lyckades</h1>
 		    <h2 class="subtitle">Ditt ordernummer är {{slug}}</h2>
-        Status: {{$route.query.redirect_status}}
       </div>
     </div>
   </section>
