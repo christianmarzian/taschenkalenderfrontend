@@ -269,10 +269,11 @@ export default {
     async vendureAdminLogin() {
       let res = await this.$apollo.provider.clients.admin.mutate({
         mutation: gql`
-          mutation {
-              login(username:"scan",password:"co5GfbRORQnmIqLbl4ls",rememberMe:true) {__typename}
+          mutation($username:String!, $password:String!) {
+              login(username:$username, password:$password, rememberMe:true) {__typename}
           }, 
         `,
+        variables: this.$config.vendure_admin_login
       });
       await this.$apollo.queries.order.refetch()
       console.log("Logged In?", res.data.login["__typename"] == "CurrentUser")

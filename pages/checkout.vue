@@ -323,7 +323,7 @@ export default {
           const baddress = await this.setOrderBillingAddress();
           const saddress = await this.setOrderShippingAddress();
           const state = await this.transitionOrderToArrangingPaymentState();
-          const payment = await this.addPaymentZero();
+          //const payment = await this.addPaymentZero();
           const settle = await this.transitionOrderToSettlePaymentState();
           this.$router.push(`/success/${this.activeOrder.code}`)
         }
@@ -550,7 +550,7 @@ export default {
           }
         `,
       });
-      console.log("ArrangingPaymentState",res)
+      console.log("SettlePaymentState",res)
       return res;
     },
 
@@ -582,7 +582,9 @@ export default {
     },
     */
 
+   /*
     async addPaymentZero() {
+      await this.vendureAdminLogin()
       let res = await this.$apollo.provider.clients.admin.mutate({
         mutation: gql`
           mutation($id:ID!) { 
@@ -602,6 +604,22 @@ export default {
       })
       return res;
     },
+
+    async vendureAdminLogin() {
+      let res = await this.$apollo.provider.clients.admin.mutate({
+        mutation: gql`
+          mutation($username:String!, $password:String!) {
+              login(username:$username, password:$password, rememberMe:true) {__typename}
+          }, 
+        `,
+        variables: this.$config.vendure_admin_login
+      });
+      await this.$apollo.queries.activeOrder.refetch()
+      console.log("Logged In?", res.data.login["__typename"] == "CurrentUser")
+      this.adminLoggedIn = true
+      return res.data.login["__typename"] == "CurrentUser"
+    },
+    */
 
   },
 

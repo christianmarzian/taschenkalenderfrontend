@@ -4,6 +4,7 @@ export default {
     designerurl: process.env.DESIGNER_URL,
     epicalapi_url: process.env.EPICALAPI_URL,
     epicalapi_login: process.env.EPICALAPI_LOGIN,
+    vendure_admin_login: process.env.VENDURE_ADMIN_LOGIN,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
