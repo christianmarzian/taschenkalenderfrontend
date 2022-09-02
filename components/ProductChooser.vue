@@ -6,7 +6,7 @@
           <label class="label">Din produkt</label>
           <div class="select">
             <select id="product" name="product" v-model="product">
-              <option value="">Kalender</option>
+              <option value="">Almanacka</option>
               <option value="Anteckningsbok">Anteckningsbok</option>
             </select>
           </div>

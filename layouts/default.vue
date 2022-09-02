@@ -77,7 +77,7 @@ export default {
     return {
       navitems: [
         {
-          title: "Personlig Kalender",
+          title: "Personlig Almanacka",
           icon: "home",
           to: { name: "almanacka" },
         },

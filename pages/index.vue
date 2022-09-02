@@ -2,7 +2,7 @@
   <div>
   <div class="container" id="bigpicture">
     <div class="container has-text-centered is-vcentered">
-      <h1 class="title is-size-1-mobile">En unik<br>personlig Kalender</h1>
+      <h1 class="title is-size-1-mobile">En unik<br>personlig Almanacka</h1>
       <br>
       <a href="/create" class="button is-black is-medium title">Börja Skapa</a>
       <br>
@@ -51,10 +51,10 @@
 
   <section class="section">
     <div class="content">
-      <p>Personlig kalender för planering, anteckningsbok för noteringar. Designa ditt omslag, skräddarsy innehållet i din kalender och lägg till moduler. Med Epicals personliga kalendrar och anteckningsböcker erbjuds du många möjligheter och tillval helt efter dina egna önskemål. Vill du ha boxar med to-do listor för att förenkla vardagen? Eller ha koll på månens faser? Med kalenderns moduler kan du följa upp träning, jobb och mycket annat. Din personliga kalender rymmer allt och du kan enkelt skapa en egen unik design för din kalender.</p>
-      <p>Din personliga omslagsdesign är skyddad av ett genomskinligt plastskydd som gör din kalender tålig. Vid design av kalender och anteckningsbok finns möjligheten att välja färg på spiralbindningen som håller ihop din design. Spiralen är tillverkad i metall och kommer i färgerna svart, vit och guld.</p>
-      <p>Med tillbehör blir planeringen och anteckningarna mycket roligare. Genom att dekorera din personliga kalender med klistermärken blir den både snygg och unik. Våra klistermärken är unikt designade för Epical Me och tar din kalender och din anteckningsbok till nya höjder. Klistermärkena är motiverande, roliga och garanterade glädjespridare.</p>
-      <p>För att du ska få ut precis det du önskar och behöver av våra kalendrar och anteckningsböcker finns också pennor och pennhållare som tillbehör. Epical Me’s pennor är idealiska för din kalender. Med Uni Pin Fine Line pennorna skriver du med precision och pennorna vilar skönt i handen vilket ger dig en behaglig skrivupplevelse. Är du en sådan person som ändrar dig ofta eller skriver fel ibland? Med våra FriXion pennor är detta inga problem då pennorna har en outslitlig radertopp som du enkelt genom friktion suddar bort din text. Lägg till en pennhållare för att hålla din nya favoritpenna på plats i din kalender. Pennhållarna finns i många färger så att du enkelt kan matcha din design. Du stänger din kalender enkelt med en snodd som du väljer till, snoddarna är flexibla, kommer i fler färger och stänger din kalender med stil.</p>
+      <p>Personlig almanacka för planering, anteckningsbok för noteringar. Designa ditt omslag, skräddarsy innehållet i din almanacka och lägg till moduler. Med Epicals personliga almanackor och anteckningsböcker erbjuds du många möjligheter och tillval helt efter dina egna önskemål. Vill du ha boxar med to-do listor för att förenkla vardagen? Eller ha koll på månens faser? Med almanackans moduler kan du följa upp träning, jobb och mycket annat. Din personliga almanacka rymmer allt och du kan enkelt skapa en egen unik design för din almanacka.</p>
+      <p>Din personliga omslagsdesign är skyddad av ett genomskinligt plastskydd som gör din almanacka tålig. Vid design av almanacka och anteckningsbok finns möjligheten att välja färg på spiralbindningen som håller ihop din design. Spiralen är tillverkad i metall och kommer i färgerna svart, vit och guld.</p>
+      <p>Med tillbehör blir planeringen och anteckningarna mycket roligare. Genom att dekorera din personliga almanacka med klistermärken blir den både snygg och unik. Våra klistermärken är unikt designade för Epical Me och tar din almanacka och din anteckningsbok till nya höjder. Klistermärkena är motiverande, roliga och garanterade glädjespridare.</p>
+      <p>För att du ska få ut precis det du önskar och behöver av våra almanackor och anteckningsböcker finns också pennor och pennhållare som tillbehör. Epical Me's pennor är idealiska för din almanacka. Med Uni Pin Fine Line pennorna skriver du med precision och pennorna vilar skönt i handen vilket ger dig en behaglig skrivupplevelse. Är du en sådan person som ändrar dig ofta eller skriver fel ibland? Med våra FriXion pennor är detta inga problem då pennorna har en outslitlig radertopp som du enkelt genom friktion suddar bort din text. Lägg till en pennhållare för att hålla din nya favoritpenna på plats i din almanacka. Pennhållarna finns i många färger så att du enkelt kan matcha din design. Du stänger din almanacka enkelt med en snodd som du väljer till, snoddarna är flexibla, kommer i fler färger och stänger din almanacka med stil.</p>
     </div>
   </section>
 
