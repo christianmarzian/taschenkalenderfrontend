@@ -11,3 +11,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  head: {
+    title: 'Cookies | Almanackor och anteckningsböcker | Epical.me',
+    meta: [
+      { hid: 'description', name: 'description', 
+        content: 'Denna webbplats använder cookies. Vi använder enhetsidentifierare för att anpassa innehållet och annonserna till användarna, tillhandahålla funktioner för sociala medier och analysera vår trafik.'
+      }
+    ]
+  },
+}
+</script>

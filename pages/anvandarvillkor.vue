@@ -116,7 +116,18 @@
   </div>
 </template>
 
-
+<script>
+export default {
+  head: {
+    title: 'Användarvillkor | Almanackor och anteckningsböcker | Epical.me',
+    meta: [
+      { hid: 'description', name: 'description', 
+        content: 'Epical drivs av Framkalla Europe AB organisationsnummer 556943-4227. Dessa villkor görs mellan Framkalla och dess kunder. Läs våra användarvillkor här.'
+      }
+    ]
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 </style>

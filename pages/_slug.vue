@@ -50,6 +50,11 @@ import gql from "graphql-tag";
 import { mapState, mapMutations } from "vuex";
 
 export default {
+
+  head() {
+    return this.headData()
+  },
+
   asyncData({ params }) {
     const slug = params.slug; // When calling /abc the slug will be "abc"
     return { slug };
@@ -62,6 +67,10 @@ export default {
           product(slug: $slug) {
             name
             description
+            customFields {
+              seotitle
+              seodescription
+            }
             variants {
               id
               sku
@@ -95,6 +104,19 @@ export default {
 
   methods: {
     ...mapMutations(["setIsLoading"]),
+
+    headData() {
+      const head =  {
+        title: this.product.customFields.seotitle || this.product.name,
+        meta: [
+          { hid: 'description', name: 'description', 
+            content: this.product.customFields.seodescription || "Personliga almanackor och anteckningsböcker"
+          }
+        ]
+      }
+      return head
+    },
+      
 
     getDescriptionPart(part = 0) {
         //console.log("productdescription: ", this.product.description)

@@ -9,11 +9,11 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Epical.me | Personlig Kalender',
+    title: 'Personliga almanackor och anteckningsböcker | Epical.me',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Hos Epical.se skapar du personliga almanackor, kalendrar eller anteckningböcker. Designa ditt omslag, skräddarsy innehållet och lägg till moduler.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     script: [ 

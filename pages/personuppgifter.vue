@@ -321,7 +321,18 @@ Behandling med stöd av uttryckligt samtycke:
   </div>
 </template>
 
-
+<script>
+export default {
+  head: {
+    title: 'Personuppgiftspolicy | Personliga almanackor | Epical.me',
+    meta: [
+      { hid: 'description', name: 'description', 
+        content: 'Framkalla Europe AB, organisationsnummer 556943-4227 ("nedan Bolaget", "vi") respekterar din integritet och din rätt att ha kontroll över dina personuppgifter.'
+      }
+    ]
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 </style>

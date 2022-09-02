@@ -262,7 +262,7 @@
       <div class="modal-background"></div>
       <div class="animation-content modal-content" style="max-width: 1024px">
         <p class="image">
-          <img ref="bigimage" src="/footer-logo.jpg" @click="$refs.bigimagemodal.classList.remove('is-active')" />
+          <img ref="bigimage" src="/footer-logo.png" @click="$refs.bigimagemodal.classList.remove('is-active')" />
         </p>
         <button type="button" class="modal-close is-large" @click="$refs.bigimagemodal.classList.remove('is-active')"></button>
       </div>
@@ -273,6 +273,15 @@
 
 <script>
 export default {
+  head: {
+    title: 'Skapa en egen snygg personlig kalender | Epical.me',
+    meta: [
+      { hid: 'description', name: 'description', 
+        content: 'Här visar vi dig steg för steg hur du använder vårt fantastiska verktyg för att i några få enkla steg designa din egen personliga kalender. Beställ enkelt online.'
+      }
+    ]
+  },
+
   data() {
     return {
       isImageModalActive: false,
