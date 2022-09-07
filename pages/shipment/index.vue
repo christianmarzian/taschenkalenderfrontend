@@ -48,6 +48,7 @@
 
 <script>
 import gql from "graphql-tag";
+import unifaunaxios from "axios";
 
 export default {
   layout: "empty",
@@ -80,6 +81,7 @@ export default {
       query: gql`
         query($id:ID!) {
           order(id: $id) {
+            code
             fulfillments {
               id
               state
@@ -112,6 +114,20 @@ export default {
                   }
                 }
               }
+            }
+            customer {
+              id
+              emailAddress
+              firstName
+              lastName
+            }
+            shippingAddress {
+              fullName
+              company
+              streetLine1
+              postalCode
+              city
+              countryCode
             }
           }
         }
@@ -239,8 +255,9 @@ export default {
     },
 
     async createShipment() {
-
-      this.trackingcode = "ABGEHTDIEPOST"
+      this.trackingcode = await this.createUnifaunLabel()
+      console.log("Returned Unifaun-Trackingcode", this.trackingcode)
+      //this.trackingcode = "ABGEHTDIEPOST"
 
       await this.addFulfillmentToOrder()
       const isShipped = await this.transitionFulfillmentToShipped()
@@ -264,6 +281,83 @@ export default {
       this.order = false
 
       this.cancelLoading()
+    },
+
+    async createUnifaunLabel() {
+      const options = {
+        method: 'POST',
+        url: 'https://api.unifaun.com/rs-extapi/v1/shipments/',
+        headers: {
+          Authorization: 'Basic NDNNU01IM1JTU0hWUExDQzpNSUlBTTVRTjJNVENJWkNCRVJaUzY2WFo='
+        },
+        data: {
+          printConfig: {
+            target1Media: 'thermo-190',
+            target1Type: 'zpl',
+            target1Options: [{key: 'mode', value: 'DT'}],
+            target2Media: 'laser-a4',
+            target2Type: 'pdf'
+          },
+          shipment: {
+            orderNo: this.order.code,
+            sender: {quickId: '123'},
+            receiver: {
+              quickId: 'CustomerId' + this.order.customer.id,
+              name: this.order.shippingAddress.fullName,
+              address1: this.order.shippingAddress.streetLine1,
+              zipcode: this.order.shippingAddress.postalCode,
+              city: this.order.shippingAddress.city,
+              country: this.order.shippingAddress.countryCode,
+              phone: '',
+              contact: '',
+              mobile: '',
+              email: this.order.customer.emailAddress
+            },
+            senderReference: this.order.code,
+            service: {
+              id: 'PUA',
+              addons: [
+                {
+                    id: 'NOTSMS',
+                    misc: 'MISC'
+                }
+              ],
+              normalShipment: true
+            },
+            options: [
+              {
+                from: 'hello@epical.se',
+                id: 'enot',
+                to: this.order.customer.emailAddress
+              }
+            ],
+            parcels: [
+              {
+                volume: 0.1,
+                copies: 1,
+                weight: 1,
+                valuePerParcel: true,
+                contents: 'Books',
+                packageCode: 'PC'
+              }
+            ]
+          }
+        }
+      };
+      console.log("Unifaun-Request",options)
+      const unifaunresponse = await unifaunaxios.request(options)
+      return unifaunresponse.data[0].parcels[0].parcelNo
+      /*
+      unifaunaxios.request(options).then(function (response) {
+        //console.log("Unifaun-Response", response.data);
+        console.log("Unifaun-Parcel", response.data[0].parcels[0].parcelNo);
+        return response.data[0].parcels[0].parcelNo
+      }).catch(function (error) {
+        console.error(error);
+        return false
+      });
+      */
+     
     },
 
     async vendureAdminLogin() {
