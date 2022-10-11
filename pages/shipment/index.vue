@@ -346,7 +346,18 @@ export default {
       };
       console.log("Unifaun-Request",options)
       const unifaunresponse = await unifaunaxios.request(options)
-      return unifaunresponse.data[0].parcels[0].parcelNo
+
+      const ealogin = await this.$axios.post(
+        this.$config.epicalapi_url + "/auth/login",
+        this.$config.epicalapi_login
+      );
+      this.apiorder = await this.$axios.$post(
+        this.$config.epicalapi_url +
+        "/labels/",
+        unifaunresponse.data[0].prints[0],
+        { headers: { Authorization: "Bearer " + ealogin.data.token } }
+      );
+      
       /*
       unifaunaxios.request(options).then(function (response) {
         //console.log("Unifaun-Response", response.data);
@@ -357,6 +368,9 @@ export default {
         return false
       });
       */
+     
+     console.log ("UNIFAUNRESPONSE",unifaunresponse)
+     //return unifaunresponse.data[0].parcels[0].parcelNo
      
     },
 
