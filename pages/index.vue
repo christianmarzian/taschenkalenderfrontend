@@ -27,7 +27,7 @@
       <div class="columns box">
         <div class="column">
           <!--<video autoplay="autoplay" id="herovideo" loop="true" muted="true" width="100%"><source src="https://www.mein-taschenkalender.com/hero-video.mp4" type="video/mp4"></video>-->
-          <img src="https://picsum.photos/400/300"/>
+          <img src="https://backend.epical.me/assets/preview/0b/300x400-modul_home__preview.jpg?preset=full" width="400" height="300"/>
         </div>
         <div class="column">
           <h2 class="subtitle"> Kalendern som är lika unik som du</h2>
@@ -81,7 +81,7 @@
 #bigpicture {
   height:500px;
   //background: url('@/assets/images/bigpicture.jpg') center / cover;
-  background: url('https://backend.epical.me/assets/preview/b6/herobanner_1344x600__preview.jpg?preset=full') center / cover;
+  background: url('https://backend.epical.me/assets/preview/93/herobanner_1344x600_new__preview.jpg?preset=full') center / cover;
 
   .container {
     padding-top:140px;
