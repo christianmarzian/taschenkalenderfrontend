@@ -3,18 +3,18 @@
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h1 class="title is-1" style="font-weight:400">Skapa en egen snygg personlig kalender</h1>
+          <h1 class="title is-1" style="font-weight:400">Skapa en egen snygg personlig almanacka</h1>
           <h2 class="subtitle is-3">
-            Så här enkelt är det att designa din egen personliga kalender
+            Så här enkelt är det att designa din egen personliga almanacka
           </h2>
 
           <p class="content">
             Här visar vi dig steg för steg hur du använder vårt fantastiska
             verktyg för att i några få enkla steg designa din egen personliga
-            kalender. Med Epical Me har det aldrig varit enklare att skapa en
-            unik kalender online! Efter att du har valt ditt önskade format,
+            almanacka. Med Epical Me har det aldrig varit enklare att skapa en
+            unik almanacka online! Efter att du har valt ditt önskade format,
             kvalitet på ditt omslag samt färger och typsnitt är du redo att
-            börja designa innehållet i din kalender!
+            börja designa innehållet i din almanacka!
             
           </p>
           <p>&nbsp;</p>
@@ -38,17 +38,17 @@
             Du börjar med att lägga till din text på omslaget
           </h3>
           <p>
-            Din text kan du placera på två olika delar av kalendern. I mitten
+            Din text kan du placera på två olika delar av almanackan. I mitten
             placerar du den stora texten som kan vara ditt namn, årtal eller
             annat. Epical Me’s smarta verktyg anpassar texten automatiskt efter
-            kalenderns bredd, därför behöver du inte fundera på om din text får
+            almanackans bredd, därför behöver du inte fundera på om din text får
             plats. Med denna automatiska anpassning utnyttjas även omslaget
-            optimalt för att du ska få ut så mycket som möjligt av din kalender.
+            optimalt för att du ska få ut så mycket som möjligt av din almanacka.
             Längre ner på ditt omslag finns det utrymme för en undertext. Denna
             text kan vara ett citat du gillar, ett motto du strävar efter eller
             något som gör dig motiverad och glad. Du kan välja mellan flera
             olika typsnitt och färger, låt din kreativitet flöda och skapa din
-            snyggaste kalender någonsin!
+            snyggaste almanacka någonsin!
           </p>
         </div>
       </div>
@@ -74,7 +74,7 @@
             möjligheten att välja din egen designs färg och baksida, varför inte
             kombinera dina favoritfärger? Du kan kombinera över 5000 olika
             färger vilket ger dig oändliga möjligheter till att skapa just den
-            kalendern du alltid velat ha!
+            almanackan du alltid velat ha!
           </p>
           <p>&nbsp;</p>
 
@@ -204,17 +204,17 @@
           />
         </div>
         <div class="column">
-          <h5 class="title is-4">5. DIN SLUTSIDOR</h5>
+          <h5 class="title is-4">5. DINA SLUTSIDOR</h5>
           <p>
-            I kalender ingår upp till 18 kostnadsfria slutsidor. Om du önskar
+            I almanacka ingår upp till 18 kostnadsfria slutsidor. Om du önskar
             addera fler utökar du enkelt antalet sidor och bilagor när du skapar
             dina slutsidor.
           </p>
           <p>
             Med Epical Me finns något som passar alla och du kan designa din
-            egen kalender helt efter dina egna önskemål. Är du en som alltid har
+            egen almanacka helt efter dina egna önskemål. Är du en som alltid har
             ett block med dig? Det behöver du inte längre då du kan addera
-            linjerade eller rutiga sidor i din kalender. Jobbar du som lärare?
+            linjerade eller rutiga sidor i din almanacka. Jobbar du som lärare?
             Då tycker vi att du ska spana in våra bilagor speciellt anpassade
             för dig i läraryrket. Du kan även lägga till vanliga bilagor som
             årsöversikt, adresslistor eller sidor för personliga anteckningar.
@@ -226,11 +226,11 @@
     <section class="section">
       <div class="columns">
         <div class="column">
-          <h5 class="title is-4">NU ÄR DIN KALENDER KLAR!</h5>
+          <h5 class="title is-4">NU ÄR DIN ALMANACKA KLAR!</h5>
           <p>
             I översikten är alla dina val listade och i förhandsvisningen kan du
             kontrollera att allt ser bra ut. Om allt är korrekt kan du lägga din
-            kalender i varukorgen. Skapa fler eller gå direkt till kassan!
+            almanacka i varukorgen. Skapa fler eller gå direkt till kassan!
           </p>
         </div>
         <div class="column is-narrow is-one-quarter">
@@ -244,16 +244,16 @@
     </section>
     <hr />
     <section class="section">
-      <h5 class="title is-4">BÖRJA SKAPA DIN KALENDER</h5>
+      <h5 class="title is-4">BÖRJA SKAPA DIN ALMANACKA</h5>
       <p>
         Nu har du koll på alla bitar i skapandet och du är redo att börja
-        designa din egen kalender. Testa dig fram och lära känna vårt
+        designa din egen almanacka. Testa dig fram och lära känna vårt
         fantastiska verktyg - du kommer inte ångra dig!
       </p>
       <p>
         <br />
         <a href="/create" class="button is-dark is-medium title"
-          >Skapa din kalender</a
+          >Skapa din almanacka</a
         >
       </p>
     </section>

@@ -49,7 +49,7 @@
             <a class="has-text-white" href="/cookies">Cookies</a>
           </div>
           <div class="column has-background-dark has-text-light is-one-third">
-            <h3 class="title is-1 has-text-light">Din Kalender</h3>
+            <h3 class="title is-1 has-text-light">Din almanacka</h3>
             <ul class="has-text-white" style="list-style-type:'+ ';margin-left:20px;margin-top:-10px;">
 
               <li>Kraftigt skyddande omslag</li>
