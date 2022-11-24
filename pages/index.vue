@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class="container" id="bigpicture">
+  <!--<div class="container" id="bigpicture">
     <div class="container has-text-centered is-vcentered">
       <h1 class="title is-size-1-mobile">En unik<br>personlig Almanacka</h1>
       <br>
@@ -9,7 +9,8 @@
                 
     </div>
             
-  </div>
+  </div>-->
+  <img src="https://backend.epical.me/assets/preview/cd/epical-black-friday__preview.jpg?preset=full" alt="Blackfriday Sale">
 
   <section class="section">
     <h2 class="subtitle has-text-centered">Personliga almanackor och anteckningsböcker</h2>
