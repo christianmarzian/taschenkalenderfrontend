@@ -2,44 +2,36 @@ export default {
 
   publicRuntimeConfig: {
     designerurl: process.env.DESIGNER_URL,
-    epicalapi_url: process.env.EPICALAPI_URL,
-    epicalapi_login: process.env.EPICALAPI_LOGIN,
+    tkapi_url: process.env.TKAPI_URL,
+    tkapi_login: process.env.TKAPI_LOGIN,
+    imageapi_url: process.env.IMAGEAPI_URL,
+    imageapi_login: process.env.IMAGEAPI_LOGIN,
+    vendure_uri: process.env.VENDURE_URI,
     vendure_admin_login: process.env.VENDURE_ADMIN_LOGIN,
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Personliga almanackor och anteckningsböcker | Epical.me',
+    title: 'Kalender selbst gestalten | Mein-Taschenkalender.com 2023',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Hos Epical.se skapar du personliga almanackor, kalendrar eller anteckningböcker. Designa ditt omslag, skräddarsy innehållet och lägg till moduler.' },
+      { hid: 'description', name: 'description', content: 'Taschenkalender, Notizbücher und Terminplaner selbst gestalten. Mit Deinen Fotos und persönlichem Inhalt.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     script: [ 
       {
-        //<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="029c6520-4566-47c2-a80b-22b6641d1ef4" data-blockingmode="auto" type="text/javascript"></script>
+        /* Über GTM
         src: "https://consent.cookiebot.com/uc.js",
-        'data-cbid': "029c6520-4566-47c2-a80b-22b6641d1ef4",
+        'data-cbid': "d7565828-4545-42fc-a7bc-a9e0ac0742a3",
         'data-blockingmode': "auto",
+        */
         //async: false
-      },
-      //<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});</script>
-      /* jetzt in default.vue
-      {
-        src: '/scripts/helpbeacon.js',
-        body:true
-      },
-      //<script type="text/javascript">window.Beacon('init', 'c873c74a-8b69-496d-9416-364983a832c7')</script>
-      {
-        src: '/scripts/helpbeacon2.js',
-        body:true
       }
-      */
-      
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', media: 'all', href: 'https://use.typekit.net/iyy7igj.css'},
     ]
   },
 
@@ -54,7 +46,9 @@ export default {
     { 
       src: '~/plugins/globalFunctions.js',
       //src: '~/plugins/axios.js'
-    }
+      
+    },
+    {src: '~/plugins/vue-carousel.js', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -62,7 +56,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    'nuxt-font-loader'
+    //'nuxt-font-loader'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -81,10 +75,12 @@ export default {
     // GoogleTagManager https://morioh.com/p/e41edc2bbdaf
     '@nuxtjs/gtm',
 
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
+
     ['nuxt-stripe-module', {
-      //publishableKey: 'pk_test_51L851ZKeMy0OEQsmGXVMkBtpOP2kDRrLieecaVcVxcAFWxM8dmHZIvMYA868imYcPRU5B5G7NwBe8ds74BLe248Q00dFBMl65F',
-      //publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
-      publishableKey: 'pk_live_51L851ZKeMy0OEQsma6I41LDLSg5ptaC1kgLSN9KOL3m71qmeRMO4x5S0o8KdW0FjXEaIog4UTqkqz5qgjI857q1T003013d5e5'
+      publishableKey: 'pk_test_51JD74vKtd6Df5K5e80kaExqOQvMPiaZB3sNwGk4uhYCPhzKFRZEY2sbFUGzqRroslNOkdyNH9fPujs4AOg8Nzq3c007EG8jsdK',
+      //publishableKey: 'pk_live_51JD74vKtd6Df5K5e9GhNksL2KItGRjPiPG0EW8bYNxz3Xn4igAYh3UMIFiOEZY3hSNSl4PfJRalGDesrePxCyk4900bhA1FuFO'
     }],
 
   ],
@@ -92,18 +88,49 @@ export default {
   // Google Tag Manager Settings
   gtm: {
     enabled:true,
-    id: 'GTM-5LQV29W'
+    id: 'GTM-NTMJKNB'
   },
 
-  // Fontloader configuration
-  fontLoader: {
-    url: '/fonts/fonts.css'
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.EPICALAPI_URL,
+    baseURL: process.env.TKAPI_URL,
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          autoFetch: true
+        },
+        
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'data.token' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get', propertyName: 'data' }
+        }
+      }
+    }, 
+
+    redirect: {
+      login: '/backend/login',
+      home: '/backend'
+    }
+    //watchLoggedIn: false
+  },
+
+  router: {
+    //middleware: ['auth'],
+    //redirect.login: '/backend/login'
+    //base: process.env.NODE_ENV === "development" ? "/backend/" : "/backend/"
   },
 
   // Apollo configuration
@@ -140,10 +167,10 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'Epical.me - Din personlig Kalender', 
-      short_name: 'Epical.me',
-      description: 'Personliga almanackor och anteckningsböcker',
-      lang: 'se', 
+      name: 'Mein-Taschenkalender.com', 
+      short_name: 'Mein-Taschenkalender',
+      description: 'Kalender und Notizbuch selbst gestalten',
+      lang: 'de', 
       display: "standalone",
       background_color: "#e7e4e1",
       theme_color: "#c3cfbb",

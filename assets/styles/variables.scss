@@ -60,7 +60,17 @@ $link-light: findLightColor($link);
 $info: #f0f1f4;
 $info-light: findLightColor($info);
 $info-invert: findColorInvert($info);
-$light: #ffb5a5;
+//$light: #ffb5a5;
+
+$text: $grey-dark;
+$primary: #95dbbb;
+$primary-light: #9EE8C7;
+$primary-invert: white;
+$link: #84C2A6;
+//$link: #6A9B85;
+$link-invert: $primary-invert;
+$link-focus-border: $link;
+$info: #A0D5DB;
 
 
 // Lists and maps
@@ -146,11 +156,11 @@ $subtitle-size: 2em;
 $subtitle-color: $primary;
 */
 
-$family-primary: 'Satoshi', 'Avenir', Helvetica, Arial, sans-serif;
-$family-secondary: 'Alegreya-Italic','Avenir', Helvetica, Arial, sans-serif;
+$family-primary: 'azo-sans-web', 'Avenir', Helvetica, Arial, sans-serif;
+$family-secondary: 'ff-market-web','Avenir', Helvetica, Arial, sans-serif;
 
 $body-family: $family-primary;
-$body-weight: 400;
+$body-weight: 300;
 $strong-weight: 500;
 
 $title-size: 4em;
@@ -161,7 +171,11 @@ $title-color:$black;
 $subtitle-size:2.5em;
 $subtitle-weight:400;
 $subtitle-family: $family-secondary;
+$subtitle-color:$black;
 
+$box-color:$black;
+$label-color:$black;
+$content-color:$black;
 
 
 
