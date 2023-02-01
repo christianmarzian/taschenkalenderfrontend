@@ -1,1 +1,0 @@
-window.Beacon('init', 'c873c74a-8b69-496d-9416-364983a832c7')
